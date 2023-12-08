@@ -4,12 +4,32 @@ require_once '../config/config.php';
 
 class DatabaseManager
 {
-    protected $pdo;
+    protected static $instance;
+    public $pdo;
 
-    public function __construct() {
+    /**
+     * @return DatabaseManager
+     *
+     * Function for create a new instance of DatabaseManager if not exist
+     */
+    public static function getInstance():DatabaseManager
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {
         $this->connect();
     }
 
+
+    /**
+     * @return void
+     *
+     * Function for connect to the database
+     */
     private function connect() {
         try {
             $this->pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
@@ -17,7 +37,6 @@ class DatabaseManager
             die("Erreur de connexion à la base de données ! " . $e->getMessage());
         }
     }
-
 
     /**
      * @param string $request
