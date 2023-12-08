@@ -62,4 +62,17 @@ class DatabaseManager
         }
 
     }
+
+    public function insert(
+        string $request,
+        array $param = []
+    ):void
+    {
+        try {
+            $query = $this->pdo->prepare($request);
+            $query->execute($param);
+        } catch (PDOException $e) {
+            die("La requête SQL à échoué: " . $e->getMessage());
+        }
+    }
 }
