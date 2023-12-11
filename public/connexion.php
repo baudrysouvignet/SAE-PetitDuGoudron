@@ -6,7 +6,7 @@ use entity\userEntity;
 $isError = false;
 $isCreated = null;
 
-/*Function For Link Between Controller And Entity*/
+/*Function For Link Between Controller And Entity */
 function loginBtn(
     userEntity $user
 ): void
@@ -69,6 +69,7 @@ if (isset($_POST['mail']) && isset($_POST['password'])){
 if (isset($_SESSION['user_info'])) {
     header ("Location: reglage.php");
 }
+
 ?>
 
 <form action="connexion.php" method="post">
