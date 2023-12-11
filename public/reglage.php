@@ -1,6 +1,7 @@
 <?php
 session_start ();
 
+
 function disconnect (): void
 {
     session_destroy();

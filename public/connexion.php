@@ -6,7 +6,7 @@ use entity\userEntity;
 $isError = false;
 $isCreated = null;
 
-/*Function For Link Between Controller And Entity*/
+/*Function For Link Between Controller And Entity */
 function loginBtn(
     userEntity $user
 ): void

@@ -8,7 +8,7 @@ use entity\userEntity;
  * @param string $password
  * @return void
  *
- * Function to connect a user after form validation and set session
+ * Function to connect a user after form validation and set session.
  */
 function connection(
     userEntity $user,
