@@ -97,4 +97,87 @@ class userEntity
             ]
         );
     }
+
+    /**
+     * @param string $newPassword
+     * @param string $oldPassword
+     * @return bool
+     *
+     * Function to update user password
+     */
+    public function updatePassword (
+        string $newPassword,
+        string $oldPassword
+    ):bool
+    {
+        $isGoodPassword = $this->passwordCheck(
+            password: $oldPassword
+        );
+
+        if ($isGoodPassword) {
+            $this->databaseManager->insert(
+                request: "UPDATE User SET password = :newPassword WHERE ID_Utilisateur = :userID",
+                param: [
+                    "newPassword" => password_hash(
+                        password: $newPassword,
+                        algo: PASSWORD_DEFAULT
+                    ),
+                    "userID" => $this->loggedInUser[0]['ID_Utilisateur'],
+                ]
+            );
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $newMail
+     * @param string $password
+     * @return bool
+     *
+     * Function to update user mail
+     */
+    public function updateMail (
+        string $newMail,
+        string $password
+    ):bool
+    {
+        $isGoodPassword = $this->passwordCheck(
+            password: $password
+        );
+        if ($isGoodPassword) {
+            $this->databaseManager->insert(
+                request: "UPDATE User SET mail = :newMail WHERE ID_Utilisateur = :userID",
+                param: [
+                    "newMail" => $newMail,
+                    "userID" => $this->loggedInUser[0]['ID_Utilisateur'],
+                ]
+            );
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $password
+     * @return bool
+     *
+     * Private function to check user password before update account information
+     */
+    private function passwordCheck(
+        string $password
+    ):bool {
+        $user = $this->databaseManager->select(
+            request: "SELECT password FROM User WHERE ID_Utilisateur = :userID",
+            param: [
+                "userID" => $this->loggedInUser[0]['ID_Utilisateur'],
+            ]
+        );
+
+        $isGoodPassword = password_verify(
+            $password,
+            $user[0]["password"]
+        );
+        return $isGoodPassword;
+    }
 }

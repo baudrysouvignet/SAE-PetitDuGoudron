@@ -22,7 +22,7 @@ function connection(
     );
 
     if ($isConnect) {
-        $_SESSION['user_info'] = $isConnect;
+        $_SESSION['user_info'] = $isConnect[0]['ID_Utilisateur'];
     }
 }
 

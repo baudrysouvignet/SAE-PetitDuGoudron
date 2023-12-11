@@ -69,6 +69,7 @@ if (isset($_POST['mail']) && isset($_POST['password'])){
 if (isset($_SESSION['user_info'])) {
     header ("Location: reglage.php");
 }
+
 ?>
 
 <form action="connexion.php" method="post">
