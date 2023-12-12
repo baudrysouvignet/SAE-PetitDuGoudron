@@ -2,6 +2,7 @@
 
 namespace entity;
 
+
 class spaceEntity
 {
     private \DatabaseManager $databaseManager;

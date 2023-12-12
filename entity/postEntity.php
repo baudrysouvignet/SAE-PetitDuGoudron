@@ -2,6 +2,7 @@
 
 namespace entity;
 
+
 class postEntity
 {
     private \DatabaseManager $databaseManager;

@@ -36,6 +36,7 @@ function loginBtn(
     }
 }
 
+
 function inscriptionBtn(
     userEntity $user,
     DatabaseManager $database
