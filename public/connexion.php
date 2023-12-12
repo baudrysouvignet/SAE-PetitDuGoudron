@@ -6,6 +6,12 @@ use entity\userEntity;
 $isError = false;
 $isCreated = null;
 
+function redirectPage(): void
+{
+    header("Location: reglage.php");
+    exit();
+}
+
 /*Function For Link Between Controller And Entity */
 function loginBtn(
     userEntity $user
@@ -14,7 +20,7 @@ function loginBtn(
     global $isError;
 
     if (isset($_SESSION['user_info'])) {
-        header ("Location: reglage.php");
+        redirectPage();
     } else {
         connection(
             user: $user,
@@ -25,7 +31,7 @@ function loginBtn(
         if (!$user->loggedInUser) {
             $isError = true;
         } else {
-            header ("Location: reglage.php");
+            redirectPage();
         }
     }
 }
@@ -67,7 +73,7 @@ if (isset($_POST['mail']) && isset($_POST['password'])){
 }
 
 if (isset($_SESSION['user_info'])) {
-    header ("Location: reglage.php");
+    redirectPage();
 }
 
 ?>
