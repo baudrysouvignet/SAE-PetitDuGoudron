@@ -4,10 +4,10 @@ session_start();
 use entity\spaceEntity;
 use entity\userEntity;
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/config/DatabaseManager.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/spaceEntity.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/controller/spaceController.php');
+require_once ('../../../config/DatabaseManager.php');
+require_once ('../../../entity/userEntity.php');
+require_once ('../../../entity/spaceEntity.php');
+require_once ('../../../controller/spaceController.php');
 
 //----------------
 // User management

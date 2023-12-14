@@ -1,5 +1,5 @@
 <?php
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
+require_once ('../../../entity/userEntity.php');
 use entity\userEntity;
 
 /**
