@@ -129,7 +129,7 @@ foreach ($spaceList as $space) {
         </form>
 HTML;
 
-    if ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN') {
+    if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')) {
         $html .= <<<HTML
         <form action="forum.php" method="post">
             <input type="hidden" name="spaceID" value="{$space->getData ()['id']}">
@@ -154,7 +154,7 @@ HTML;
                 </div>
             </div>
 HTML;
-            if ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN'){
+            if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')){
                 $html .= <<<HTML
                     <form action="forum.php" method="post">
                         <input type="hidden" name="postID" value="{$post->getData()['id']}">
