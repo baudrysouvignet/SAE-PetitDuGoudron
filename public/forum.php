@@ -1,12 +1,17 @@
 <?php
 session_start();
 
+use entity\spaceEntity;
 use entity\userEntity;
 
 require_once '../config/DatabaseManager.php';
 require_once '../entity/userEntity.php';
+require_once '../entity/spaceEntity.php';
 require_once '../controller/spaceController.php';
 
+//----------------
+// User management
+//----------------
 
 $database = DatabaseManager::getInstance();
 $user = new userEntity(
@@ -19,39 +24,82 @@ $user = new userEntity(
 if (isset($_SESSION['user_info'])){
     $user->recoverUserData ($_SESSION['user_info']);
 }
+
+//----------------
+// Space management
+//----------------
+
 $spaceList = recoverAllSpace (databaseManager: $database);
 
-if (isset($_POST['post'])) {
-    addPostOnSpace (
-        space: $spaceList[$_POST['spaceID']],
-        comment: $_POST['comment'],
+if (isset($_POST['addSpace'])) {
+    $space = new spaceEntity (
+        databaseManager: $database,
+        id: null,
+        title: $_POST['title'],
+        description: $_POST['description'],
         user: $user
     );
+
+    $space->saveSpace();
     header ("Location: forum.php");
-    exit();
-} else if (isset($_POST['connexion'])) {
-    header ("Location: connexion.php");
     exit();
 }
 
-if (isset($_POST['delete'])) {
-    $postIdToDelete = $_POST['postID'];
-
+if (isset($_POST['spaceDelete'])) {
     foreach ($spaceList as $space) {
-        $posts = $space->postList;
-        foreach ($posts as $post) {
-            if ($post->getData()['id'] == $postIdToDelete) {
-                $post->deletePost();
-                break 2;
-            }
+        if ($space->getData()['id'] == $_POST['spaceID']) {
+            $space->deleteSpace();
+            break;
         }
     }
     header ("Location: forum.php");
     exit();
 }
 
+//----------------
+// Post management
+//----------------
+
+// Add post in space and bddd
+if (isset($_POST['post'])) {
+    addPostOnSpace (
+        space: $spaceList[$_POST['spaceID']],
+        comment: $_POST['comment'],
+        user: $user
+    );
+} else if (isset($_POST['connexion'])) {
+    header ("Location: connexion.php");
+    exit();
+}
+
+// Delete post
+if (isset($_POST['delete'])) {
+    foreach ($spaceList as $space) {
+        $posts = $space->postList;
+        foreach ($posts as $post) {
+            if ($post->getData()['id'] == $_POST['postID']) {
+
+                $space->deletePost(
+                    post: $post
+                );
+                break 2;
+            }
+        }
+    }
+}
+
 ?>
 
+
+<form action="forum.php" method="post">
+    <label for="title">Question</label>
+    <input type="text" name="title" id="title" placeholder="Titre" maxlength="250">
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" placeholder="Description">
+
+    <input type="submit" name="addSpace" value="Ajouter un espace">
+</form>
 
 <?php
 foreach ($spaceList as $space) {
@@ -81,6 +129,15 @@ foreach ($spaceList as $space) {
         </form>
 HTML;
 
+    if ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN') {
+        $html .= <<<HTML
+        <form action="forum.php" method="post">
+            <input type="hidden" name="spaceID" value="{$space->getData ()['id']}">
+            <input type="submit" name="spaceDelete" value="Supprimer la question">
+        </form>
+HTML;
+    }
+
     if (count($posts) > 0) {
         $html .= "<button class='more'>Voir les réponses</button>";
         $html .= "<div class='postsContent'>";
@@ -97,7 +154,7 @@ HTML;
                 </div>
             </div>
 HTML;
-            if ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur']){
+            if ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN'){
                 $html .= <<<HTML
                     <form action="forum.php" method="post">
                         <input type="hidden" name="postID" value="{$post->getData()['id']}">

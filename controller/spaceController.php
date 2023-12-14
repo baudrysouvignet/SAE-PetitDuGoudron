@@ -9,6 +9,14 @@ require_once '../entity/spaceEntity.php';
 require_once '../entity/userEntity.php';
 require_once '../entity/postEntity.php';
 
+/**
+ * @param spaceEntity $space
+ * @param array $postList
+ * @param DatabaseManager $databaseManager
+ * @return void
+ *
+ * This function is used to set each post in the space
+ */
 function setEachPost(
     spaceEntity $space,
     array $postList,
@@ -36,6 +44,12 @@ function setEachPost(
     }
 }
 
+/**
+ * @param DatabaseManager $databaseManager
+ * @return array
+ *
+ * This function is used to recover all the spaces
+ */
 function recoverAllSpace (
     DatabaseManager $databaseManager
 ):array
@@ -74,6 +88,14 @@ function recoverAllSpace (
     return $spaceList;
 }
 
+/**
+ * @param spaceEntity $space
+ * @param string $comment
+ * @param userEntity $user
+ * @return void
+ *
+ * This function is used to add a post on a space
+ */
 function addPostOnSpace (
     spaceEntity $space,
     string $comment,

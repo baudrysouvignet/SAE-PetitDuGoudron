@@ -63,6 +63,13 @@ class DatabaseManager
 
     }
 
+    /**
+     * @param string $request
+     * @param array $param
+     * @return void
+     *
+     * Function for insert data in the database
+     */
     public function insert(
         string $request,
         array $param = []
@@ -74,5 +81,13 @@ class DatabaseManager
         } catch (PDOException $e) {
             die("La requête SQL à échoué: " . $e->getMessage());
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function lastInsertId():int
+    {
+        return $this->pdo->lastInsertId();
     }
 }

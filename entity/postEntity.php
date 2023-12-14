@@ -39,6 +39,9 @@ class postEntity
         ];
     }
 
+    /**
+     * @return void
+     */
     public function deletePost(): void
     {
         $this->databaseManager->insert(
