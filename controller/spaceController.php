@@ -1,13 +1,14 @@
 <?php
 
 use entity\spaceEntity;
-use entity\userEntity;
 use entity\postEntity;
+use entity\userEntity;
 
 
-require_once '../entity/spaceEntity.php';
-require_once '../entity/userEntity.php';
-require_once '../entity/postEntity.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/entity/spaceEntity.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/entity/postEntity.php');
+
 
 /**
  * @param spaceEntity $space

@@ -4,10 +4,10 @@ session_start();
 use entity\spaceEntity;
 use entity\userEntity;
 
-require_once '../../../config/DatabaseManager.php';
-require_once '../../../entity/userEntity.php';
-require_once '../../../entity/spaceEntity.php';
-require_once '../../../controller/spaceController.php';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/config/DatabaseManager.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/spaceEntity.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/controller/spaceController.php');
 
 //----------------
 // User management
@@ -91,15 +91,15 @@ if (isset($_POST['delete'])) {
 ?>
 
 
-<form action="forum.php" method="post">
-    <label for="title">Question</label>
-    <input type="text" name="title" id="title" placeholder="Titre" maxlength="250">
+    <form action="forum.php" method="post">
+        <label for="title">Question</label>
+        <input type="text" name="title" id="title" placeholder="Titre" maxlength="250">
 
-    <label for="description">Description</label>
-    <input type="text" name="description" id="description" placeholder="Description">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" placeholder="Description">
 
-    <input type="submit" name="addSpace" value="Ajouter un espace">
-</form>
+        <input type="submit" name="addSpace" value="Ajouter un espace">
+    </form>
 
 <?php
 foreach ($spaceList as $space) {
@@ -129,7 +129,7 @@ foreach ($spaceList as $space) {
         </form>
 HTML;
 
-    if ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN') {
+    if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')) {
         $html .= <<<HTML
         <form action="forum.php" method="post">
             <input type="hidden" name="spaceID" value="{$space->getData ()['id']}">
@@ -154,7 +154,7 @@ HTML;
                 </div>
             </div>
 HTML;
-            if ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN'){
+            if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')){
                 $html .= <<<HTML
                     <form action="forum.php" method="post">
                         <input type="hidden" name="postID" value="{$post->getData()['id']}">

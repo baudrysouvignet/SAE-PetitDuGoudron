@@ -14,8 +14,8 @@ if (isset($_POST['deconnexion']) || !isset($_SESSION['user_info'])) {
 }
 
 use entity\userEntity;
-require_once '../entity/userEntity.php';
-require_once '../config/DatabaseManager.php';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/config/DatabaseManager.php');
 
 $database = DatabaseManager::getInstance();
 $user = new userEntity(

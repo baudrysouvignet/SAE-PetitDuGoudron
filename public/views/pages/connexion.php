@@ -53,10 +53,10 @@ function inscriptionBtn(
 
 /*Condition For Login Or Register*/
 if (isset($_POST['mail']) && isset($_POST['password'])){
-    require_once '../../../config/DatabaseManager.php';
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/config/DatabaseManager.php');
 
-    require_once '../../../controller/userController.php';
-    require_once '../../../entity/userEntity.php';
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/controller/userController.php');
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/entity/userEntity.php');
 
     $database = DatabaseManager::getInstance();
     $user = new userEntity(
