@@ -70,7 +70,7 @@ foreach ($form  as $value) {
 
 ?>
 
-<h1><?= $user->loggedInUser[0]['mail'] ?></h1>
+<h1><?= $user->loggedInUser[0]['mail'] ?> <?= $user->loggedInUser[0]['role'] == 'ROLE_ADMIN' ? '(admin)' : '' ?></h1>
 
 <form action="reglage.php" method="post">
     <label for="oldPassword">Ancien mot de passe</label>

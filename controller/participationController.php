@@ -65,6 +65,30 @@ function editParticipation(
 
 }
 
+function deleteParticipation (
+    DatabaseManager $databaseManager,
+    userEntity $user,
+    int $idParticipation
+): void {
+    $participation = $databaseManager->select(
+        request: "SELECT ID_Utilisateur FROM Inscription WHERE ID_Insription  = :idParticipation",
+        param: [
+            "idParticipation" => $idParticipation
+        ]
+    );
+
+    if ($participation[0]["ID_Utilisateur"] == $user->loggedInUser[0]["ID_Utilisateur"] || $user->loggedInUser[0]["role"] == "ROLE_ADMIN") {
+        $databaseManager->insert (
+            request: "DELETE FROM Inscription WHERE ID_Insription = :idParticipation",
+            param: [
+                "idParticipation" => $idParticipation
+            ]
+        );
+    }
+}
+
+
+
 /**
  * @param DatabaseManager $databaseManager
  * @param userEntity $user
@@ -74,14 +98,51 @@ function editParticipation(
  */
 function recoverParticipation(
     DatabaseManager $databaseManager,
-    userEntity $user
+    userEntity $user = null
 ): array {
+    $rq = "SELECT * FROM Inscription";
+    $param = [];
+    if ($user != null) {
+        $rq = "SELECT * FROM Inscription WHERE ID_Utilisateur = :user";
+        $param = ["user" => $user->loggedInUser[0]["ID_Utilisateur"]];
+    }
+
     $participation = $databaseManager->select(
-        request: "SELECT * FROM Inscription WHERE ID_Utilisateur = :user",
-        param: [
-            "user" => $user->loggedInUser[0]["ID_Utilisateur"]
-        ]
+        request: $rq,
+        param: $param
     );
 
     return $participation;
 }
+
+/**
+ * @param array $data
+ * @return void
+ *
+ * This function is used to create a PDF
+ */
+function createPDF(array $data): void {
+    require_once(__DIR__ . '/../vendor/tecnickcom/tcpdf/tcpdf.php');
+    $pdf = new TCPDF();
+
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Author');
+    $pdf->SetTitle('Données pour chaque personne');
+    $pdf->SetMargins(10, 10, 10);
+
+    $pdf->AddPage();
+
+    $pdf->SetFont('helvetica', 'B', 16);
+    $pdf->Cell(0, 10, 'Inscription n°'.$data['ID_Insription'], 0, 1, 'C');
+
+    $pdf->SetFont('helvetica', 'B', 12);
+    foreach ($data as $key => $value) {
+        $pdf->Cell(40, 10, $key . ':', 0, 0, 'L');
+        $pdf->SetFont('helvetica', '    ', 12);
+        $pdf->Cell(0, 10, '       '.$value, 0, 1, 'L');
+    }
+
+    $pdf->Output('inscription_n_'.$data['ID_Insription'].'.pdf', 'D');
+}
+
+
