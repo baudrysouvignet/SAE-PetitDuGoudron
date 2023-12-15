@@ -105,7 +105,8 @@ if (isset($_POST['participer'])) {
         "doctorPhone" => (int)$_POST['doctorPhone'],
         "secu" => (int)$_POST['secu'],
         "autorisation_parentale" => $_POST['autorisation_parentale'],
-        "id_utilisateur" => $_POST['id_utilisateur']
+        "id_utilisateur" => $_POST['id_utilisateur'],
+        "id_form" => $_POST['id_form']
     ];
 
     editParticipation(

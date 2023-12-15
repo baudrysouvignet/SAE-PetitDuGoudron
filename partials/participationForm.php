@@ -22,7 +22,7 @@ $isValue = isset($infoForm);
     <input type="text" id="adress" name="adresse" <?= $isValue ? 'value ='. $infoForm['adress'] : ""?> required>
     
     <label for="phone">Téléphone :</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" <?= $isValue ? 'value ='. $infoForm['phone'] : ""?> required>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" <?= $isValue ? 'value =0'. $infoForm['phone'] : ""?> required>
     
     <label for="email">Email :</label>
     <input type="email" id="email" name="email" <?= $isValue ? 'value ='. $infoForm['email'] : ""?> required>
@@ -37,10 +37,10 @@ $isValue = isset($infoForm);
     <textarea id="drug" name="drug"  <?= $isValue ? 'value ='. $infoForm['drug'] : ""?>></textarea>
     
     <label for="doctorPhone">Téléphone du Médecin :</label>
-    <input type="tel" id="doctorPhone" name="doctorPhone" pattern="[0-9]{10}"  <?= $isValue ? 'value ='. $infoForm['doctorPhone'] : ""?> required>
+    <input type="tel" id="doctorPhone" name="doctorPhone" pattern="[0-9]{10}"  <?= $isValue ? 'value =0'. $infoForm['doctorPhone'] : ""?> required>
     
     <label for="secu">Numéro de Sécurité Sociale :</label>
-    <input type="text" id="secu" name="secu" <?= $isValue ? 'value ='. $infoForm['secu'] : ""?> required>
+    <input type="text" id="secu" name="secu" <?= $isValue ? 'value =0'. $infoForm['secu'] : ""?> required>
     
     <input type="hidden" name="id_utilisateur" value="<?= $user->loggedInUser[0]["ID_Utilisateur"] ?>">
     <input type="hidden" name="id_form" value="<?= $isValue ? $infoForm['ID_Insription'] : ""?>">

@@ -28,8 +28,22 @@ function editParticipation(
 
     if ($participation[0]["ID_Utilisateur"] == $user->loggedInUser[0]["ID_Utilisateur"]) {
         $databaseManager->insert (
-            request: "UPDATE Inscription SET Prenom_Enfant = :firstName, Date_Naissance = :date, Sexe = :sexe, Adresse = :adress, Telephone = :phone, Email = :email, Allergies = :allergy, Conditions_Medicales = :health, Medicaments = :drug, Telephone_Medecin = :doctorPhone, Num_Secu = :secu, Autorisation_Parentale = :autorisation_parentale, ID_Utilisateur = :id_utilisateur WHERE ID_Insription = :idParticipation",
-            param: $data
+            request: "UPDATE Inscription
+                        SET Prenom_Enfant = :firstName,
+                            Date_Naissance = :date,
+                            Sexe = :sexe,
+                            Adresse = :adress,
+                            Telephone = :phone,
+                            Email = :email,
+                            Allergies = :allergy,
+                            Conditions_Medicales = :health,
+                            Medicaments = :drug,
+                            Telephone_Medecin = :doctorPhone,
+                            Num_Secu = :secu,
+                            Autorisation_Parentale = :autorisation_parentale,
+                            ID_Utilisateur = :id_utilisateur
+                        WHERE ID_Insription = :id_form;"
+            ,param: $data
         );
     }
 
