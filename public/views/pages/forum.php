@@ -14,9 +14,6 @@ require_once ('../../../controller/spaceController.php');
 //----------------
 
 $database = DatabaseManager::getInstance();
-$user = new userEntity(
-    databaseManager: $database
-);
 
 $user = new userEntity(
     databaseManager: $database
