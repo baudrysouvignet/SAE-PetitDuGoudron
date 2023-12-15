@@ -2,6 +2,13 @@
 
 use entity\userEntity;
 
+/**
+ * @param DatabaseManager $databaseManager
+ * @param array $data
+ * @return void
+ *
+ * This function is used to add a participation
+ */
 function addParticipation(
     DatabaseManager $databaseManager,
     array $data
@@ -13,6 +20,15 @@ function addParticipation(
     );
 }
 
+/**
+ * @param DatabaseManager $databaseManager
+ * @param array $data
+ * @param userEntity $user
+ * @param int $idParticipation
+ * @return void
+ *
+ * This function is used to edit a participation
+ */
 function editParticipation(
     DatabaseManager $databaseManager,
     array $data,
@@ -49,6 +65,13 @@ function editParticipation(
 
 }
 
+/**
+ * @param DatabaseManager $databaseManager
+ * @param userEntity $user
+ * @return array
+ *
+ * This function is used to recover a participation
+ */
 function recoverParticipation(
     DatabaseManager $databaseManager,
     userEntity $user
