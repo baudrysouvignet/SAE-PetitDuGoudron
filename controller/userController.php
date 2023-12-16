@@ -59,3 +59,67 @@ function inscription(
     return false;
 }
 
+/**
+ * @param DatabaseManager $database
+ * @param int $userID
+ * @return void
+ *
+ * Function to ban a user
+ */
+function banUser(
+    DatabaseManager $database,
+    int $userID
+): void
+{
+    $database->insert(
+        request: "UPDATE User SET role = 'ROLE_BANNED' WHERE ID_Utilisateur = :userID",
+        param: [
+            "userID" => $userID,
+        ]
+    );
+}
+
+
+/**
+ * @param DatabaseManager $database
+ * @param int $userID
+ * @return void
+ *
+ * Function to unban a user
+ */
+function unBanUser(
+    DatabaseManager $database,
+    int $userID
+): void
+{
+    $database->insert(
+        request: "UPDATE User SET role = null WHERE ID_Utilisateur = :userID",
+        param: [
+            "userID" => $userID,
+        ]
+    );
+}
+
+/**
+ * @param DatabaseManager $database
+ * @return array
+ *
+ *  Function to recover all user
+ */
+function recoverAllUser (
+    DatabaseManager $database
+): array
+{
+    $query = $database->select(
+        request: "SELECT * FROM User"
+    );
+
+    $userList = [];
+
+    foreach ($query as $user) {
+        $userList[$user['ID_Utilisateur']] = new userEntity(databaseManager: $database);
+        $userList[$user['ID_Utilisateur']]->recoverUserData(userID: $user['ID_Utilisateur']);
+    }
+
+    return $userList;
+}

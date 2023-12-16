@@ -6,6 +6,7 @@ use entity\userEntity;
 
 require_once ('../../../config/DatabaseManager.php');
 require_once ('../../../entity/userEntity.php');
+require_once ('../../../controller/userController.php');
 require_once ('../../../entity/spaceEntity.php');
 require_once ('../../../controller/spaceController.php');
 
@@ -85,6 +86,20 @@ if (isset($_POST['delete'])) {
     }
 }
 
+// Ban user
+
+if (isset($_POST['banMan'])) {
+    banUser (
+        database: $database,
+        userID: (int)$_POST['userId']
+    );
+} elseif (isset($_POST['unBanMan'])) {
+    unBanUser (
+        database: $database,
+        userID: (int)$_POST['userId']
+    );
+}
+
 ?>
 
 
@@ -103,7 +118,10 @@ foreach ($spaceList as $space) {
     $name = 'connexion';
     $field = 'Connectez-vous';
 
-    if (isset($_SESSION['user_info'])) {
+    if (isset($_SESSION['user_info']) && $user->loggedInUser[0]['role'] == 'ROLE_BANNED') {
+        $name = 'banni';
+        $field = 'Vous êtes banni';
+    } else if (isset($_SESSION['user_info'])) {
         $name = 'post';
         $field = 'Poster';
     }
@@ -117,6 +135,7 @@ foreach ($spaceList as $space) {
             <h3>{$space->getData()['title']}</h3>
             <p>{$space->getData()['description']}</p>
             <p>{$space->getData()['user']}</p>
+            
         </div> 
         <form action="forum.php" method="post">
             <input type="hidden" name="spaceID" value="{$space->getData()['id']}">
@@ -140,14 +159,39 @@ HTML;
         $html .= "<div class='postsContent'>";
 
         foreach ($posts as $post) {
+            $userPost = new userEntity(
+                databaseManager: $database
+            );
+            $userPost->recoverUserData(userID: $post->getData()['user'][1]);
 
-            /*HTML for post part*/
+            $banFields = '';
+            if (isset($_SESSION['user_info']) && $user->loggedInUser[0]['role'] == 'ROLE_ADMIN' && $userPost->loggedInUser[0]['role'] != 'ROLE_ADMIN') {
+                if ($userPost->loggedInUser[0]['role'] != 'ROLE_BANNED') {
+                    $banFields = <<< HTML
+                    <form action="forum.php" method="post">
+                        <input type="hidden" name="userId" value="{$post->getData()['user'][1]}">
+                        <input type="submit" name="banMan" value="Bannir">
+                    </form>
+HTML;
+                } else if ($userPost->loggedInUser[0]['role'] == 'ROLE_BANNED') {
+                    $banFields = <<< HTML
+                    <form action="forum.php" method="post">
+                        <input type="hidden" name="userId" value="{$post->getData()['user'][1]}">
+                        <input type="submit" name="unBanMan" value="Débanir">
+                    </form>
+HTML;
+                }
+            }
+
+
+                /*HTML for post part*/
             $html .= <<<HTML
             <div class="post">
                 <div class="info">
                     <p>{$post->getData()['content']}</p>
                     <p>{$post->getData()['createdAt']}</p>
                     <p>{$post->getData()['user'][0]}</p>
+                    {$banFields}
                 </div>
             </div>
 HTML;
