@@ -6,6 +6,7 @@ require_once ('../../../entity/userEntity.php');
 require_once ('../../../controller/userController.php');
 require_once ('../../../config/DatabaseManager.php');
 require_once ('../../../controller/participationController.php');
+require_once ('../../../controller/eventCalendar.php');
 
 $database = DatabaseManager::getInstance();
 
@@ -110,15 +111,70 @@ foreach ($users as $uniqueUser) {
 HTML;
 }
 
+/*Calendrier*/
+$events = recoverAllEvents(
+    database: $database
+);
+
+$dispayEvent = "";
+foreach ($events as $event) {
+    $dispayEvent .= <<<HTML
+    <div>
+        <h3>{$event['Title']}</h3>
+        <p>{$event['Time']}</p>
+        <p>{$event['Description']}</p>
+    </div>
+HTML;
+}
+
+if (isset($_POST['eventEdit'])) {
+    addOrEditEvent (
+        database: $database,
+        title: $_POST['eventTitle'],
+        time: $_POST['eventSelect'],
+        description: $_POST['eventDescription']
+    );
+    header("Location: admin_2024.php");
+    exit();
+}
+
+if (isset($_POST['eventDelete'])) {
+    deleteEvent (
+        database: $database,
+        time: $_POST['eventSelect']
+    );
+    header("Location: admin_2024.php");
+    exit();
+}
+
 ?>
 
 
 <div>
-    <h1>Les Inscription </h1>
+    <h1>Les inscrits</h1>
     <?= $displayParticipation ?>
 </div>
 
 <div>
     <h1>Les utilisateurs</h1>
     <?= $dispayUser ?>
+</div>
+
+<div>
+    <h1>Les évènements</h1>
+    <?= $dispayEvent ?>
+    <form action="admin_2024.php" method="post">
+        <label for="eventSelect">Selectionner l'evenement à modifier</label>
+        <input type="date" name="eventSelect" id="eventSelect" placeholder="Date de l'event" min="2024-09-01" value="2024-09-01" required>
+
+
+        <label for="eventTitle">Titre</label>
+        <input type="text" name="eventTitle" id="eventTitle" placeholder="Nouveau titre" required>
+
+        <label for="eventDate">Date</label>
+        <input type="text" name="eventDescription" id="eventDate" placeholder="Nouvelle description" required>
+
+        <button type="submit" name="eventEdit">Modifier/Ajouter</button>
+        <button type="submit" name="eventDelete">Supprimer</button>
+    </form>
 </div>
