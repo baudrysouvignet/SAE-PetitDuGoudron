@@ -103,8 +103,10 @@ function addPostOnSpace (
     userEntity $user
 ):void
 {
-    $space->addPost(
-        user: $user,
-        comment: $comment
-    );
+    if ($user->loggedInUser[0]['role'] != 'ROLE_BANNED') {
+        $space->addPost(
+            user: $user,
+            comment: $comment
+        );
+    }
 }

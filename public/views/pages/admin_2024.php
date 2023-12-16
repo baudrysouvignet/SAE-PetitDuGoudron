@@ -3,6 +3,7 @@ session_start ();
 
 use entity\userEntity;
 require_once ('../../../entity/userEntity.php');
+require_once ('../../../controller/userController.php');
 require_once ('../../../config/DatabaseManager.php');
 require_once ('../../../controller/participationController.php');
 
@@ -67,9 +68,57 @@ HTML;
 
 }
 
+/*Ban USer*/
+
+if (isset($_POST['banMan'])) {
+    banUser (
+        database: $database,
+        userID: (int)$_POST['userId']
+    );
+} elseif (isset($_POST['unBanMan'])) {
+    unBanUser (
+        database: $database,
+        userID: (int)$_POST['userId']
+    );
+}
+
+$users = recoverAllUser (
+    database: $database
+);
+
+
+$dispayUser = "";
+foreach ($users as $uniqueUser) {
+    if ($uniqueUser->loggedInUser[0]['role'] == 'ROLE_ADMIN') {
+        continue;
+    }
+
+    $btn = "<button type='submit' name='banMan'>bannir</button>";
+    if ($uniqueUser->loggedInUser[0]['role'] == 'ROLE_BANNED') {
+        $btn = "<button type='submit' name='unBanMan'>débannir</button>";
+    }
+
+
+    $dispayUser .= <<<HTML
+    <div>
+        <p>{$uniqueUser->loggedInUser[0]['mail']}</p>
+        <form method="post" action="admin_2024.php">
+            <input type="hidden" name="userId" value="{$uniqueUser->loggedInUser[0]['ID_Utilisateur']}">
+            {$btn}
+        </form>
+    </div>
+HTML;
+}
+
 ?>
 
 
-<?php
+<div>
+    <h1>Les Inscription </h1>
+    <?= $displayParticipation ?>
+</div>
 
-echo $displayParticipation;
+<div>
+    <h1>Les utilisateurs</h1>
+    <?= $dispayUser ?>
+</div>
