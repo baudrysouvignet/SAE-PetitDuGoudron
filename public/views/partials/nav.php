@@ -1,16 +1,5 @@
 
 
-<div class="nav">
-    <ul>
-        <li><a href="#"><img src="../img/nav/home.svg" alt="Accueil"></a></li>
-        <li><a href="#"><img src="../img/nav/forum.svg" alt="Forum"></a></li>
-        <li><a href="#"><img src="../img/nav/account.svg" alt="Compte"></a></li>
-        <li><a href="#" id="icon-logo"><img src="../img/nav/logo.svg" alt="Logo de la régie du quartier"></a></li>
-    </ul>
-</div>
-
-
-<!-- Partie de la barre responsive -->
 <div class="container">
     <div class="navbar">
         <div class="menu-toggle">

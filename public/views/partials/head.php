@@ -8,3 +8,5 @@
 <script src="../../scripts/partials/nav.js"></script>
 
 <link rel="stylesheet" href="../../styles/partials/styles_footer.css">
+
+<link rel="stylesheet" href="../../styles/global.css">
