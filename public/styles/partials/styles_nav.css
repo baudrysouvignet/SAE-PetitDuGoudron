@@ -25,7 +25,7 @@
     position: relative;
     cursor: pointer;
     transition: all 0.3s;
-    display: none;
+    display: flex;
 }
 
 span {
@@ -123,15 +123,4 @@ span::before {
 
 .nav-link a img {
     margin-right: 10px;
-}
-
-
-@media screen and (max-width: 1200px) {
-    #menu-toggle-btn {
-        display: flex;
-    }
-
-    .nav {
-        display: none;
-    }
 }
