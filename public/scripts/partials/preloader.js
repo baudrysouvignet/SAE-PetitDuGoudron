@@ -78,7 +78,7 @@ gsap.to('.char', {
     stagger: 0.05,
     delay: 0,
     duration: .05,
-    repeat: -1,
+    repeat: 2,
     repeatDelay: 0.45,
     yoyo: true,
 })
