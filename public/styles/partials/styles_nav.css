@@ -124,3 +124,25 @@ span::before {
 .nav-link a img {
     margin-right: 10px;
 }
+
+@media screen and (max-width: 585px) {
+    .nav-link a {
+        font-size: 40px;
+    }
+
+    .nav-link a img {
+        width: 30px;
+    }
+
+}
+
+@media screen and (max-width: 376px) {
+    .nav-link a {
+        font-size: 27px;
+    }
+
+    .nav-link a img {
+        width: 27px;
+    }
+
+}
