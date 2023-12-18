@@ -3,12 +3,15 @@
     height: 89px;
     overflow: hidden;
     background: #fff;
-    position: relative;
+    position: fixed;
+    z-index: 3;
+    top: 0;
 }
 
 .navbar {
+    top: 0;
     position: fixed;
-    z-index: 3;
+    z-index: 4;
     width: 100%;
     display: flex;
     justify-content: space-between;
