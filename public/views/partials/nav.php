@@ -1,8 +1,4 @@
-<head>
-    <link rel="stylesheet" href="../../styles/partials/styles_nav.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="../../scripts/partials/nav.js"></script>
-</head>
+
 
 <div class="nav">
     <ul>

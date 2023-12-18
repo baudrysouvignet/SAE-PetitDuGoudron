@@ -1,6 +1,4 @@
-<head>
-    <link rel="stylesheet" href="../../styles/partials/styles_footer.css">
-</head>
+
 <footer>
     <div class="footer-content">
         <div class="footer-section">
