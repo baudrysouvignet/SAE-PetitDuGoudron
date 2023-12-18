@@ -7,9 +7,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur et la hauteur */
     z-index: 1;
 }
