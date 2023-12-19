@@ -59,10 +59,10 @@ foreach ($particpations as $particpation) {
     <div>
         <p>{$particpation['Prenom_Enfant']} - Dossier n°{$particpation['ID_Insription']}</p>
         
-        <form method="post" action="admin_2024.php">
+        <form method="post" action="admin_2024.php?field=inscManagement">
             <input type="hidden" name="participationID" value="{$particpation['ID_Insription']}">
-            <button type="submit" name="participationpdf">infos</button>
-            <button type="submit" name="participationdelet">supprimer</button>
+            <button class="button" type="submit" name="participationpdf">infos</button>
+            <button class="button secondary" type="submit" name="participationdelet">supprimer</button>
         </form>
     </div>
 HTML;
@@ -94,17 +94,17 @@ foreach ($users as $uniqueUser) {
         continue;
     }
 
-    $btn = "<button type='submit' name='banMan'>bannir</button>";
+    $btn = "<button class='button' type='submit' name='banMan'>bannir</button>";
     if ($uniqueUser->loggedInUser[0]['role'] == 'ROLE_BANNED') {
-        $btn = "<button type='submit' name='unBanMan'>débannir</button>";
+        $btn = "<button class='button' type='submit' name='unBanMan'>débannir</button>";
     }
 
 
     $dispayUser .= <<<HTML
     <div>
         <p>{$uniqueUser->loggedInUser[0]['mail']}</p>
-        <form method="post" action="admin_2024.php">
-            <input type="hidden" name="userId" value="{$uniqueUser->loggedInUser[0]['ID_Utilisateur']}">
+        <form method="post" action='admin_2024.php?field=compteManagement'>
+            <input  type="hidden" name="userId" value="{$uniqueUser->loggedInUser[0]['ID_Utilisateur']}">
             {$btn}
         </form>
     </div>
@@ -120,8 +120,8 @@ $dispayEvent = "";
 foreach ($events as $event) {
     $dispayEvent .= <<<HTML
     <div>
-        <h3>{$event['Title']}</h3>
         <p>{$event['Time']}</p>
+        <p>{$event['Title']}</p>
         <p>{$event['Description']}</p>
     </div>
 HTML;
@@ -154,41 +154,65 @@ if (isset($_POST['eventDelete'])) {
 <html lang="fr">
 <head>
     <?php include '../partials/head.php'?>
-
+    <link rel="stylesheet" href="../../styles/pages/admin.css">
+    <script src="../../scripts/pages/admin.js" defer></script>
     <title>PDG - Admin</title>
 </head>
 <body>
 
     <?php include '../partials/nav.php'?>
+    <h1 class="title">Compte administrateur</h1>
+    <main>
+        <nav class="navManagement">
+            <a id="inscManagement" class="active">
+                <p>Les Inscriptions</p>
+                <img src="../img/arrow_back.svg" alt="">
+            </a>
+            <a id="compteManagement">
+                <p>Les Comptes</p>
+                <img src="../img/arrow_back.svg" alt="">
+            </a>
+            <a id="calManagement">
+                <p>Le Calendrier</p>
+                <img src="../img/arrow_back.svg" alt="">
+            </a>
+        </nav>
 
-    <div>
-        <h1>Les inscrits</h1>
-        <?= $displayParticipation ?>
-    </div>
+        <div class="content">
+            <div class="part activate">
+                <h2>Les inscrits</h2>
+                <?= $displayParticipation ?>
+            </div>
 
-    <div>
-        <h1>Les utilisateurs</h1>
-        <?= $dispayUser ?>
-    </div>
+            <div class="user">
+                <h2>Les utilisateurs</h2>
+                <?= $dispayUser ?>
+            </div>
 
-    <div>
-        <h1>Les évènements</h1>
-        <?= $dispayEvent ?>
-        <form action="admin_2024.php" method="post">
-            <label for="eventSelect">Selectionner l'evenement à modifier</label>
-            <input type="date" name="eventSelect" id="eventSelect" placeholder="Date de l'event" min="2024-09-01" value="2024-09-01" required>
+            <div class="cal">
+                <h2>Les évènements</h2>
+
+                <form action="admin_2024.php?field=calManagement" method="post">
+                    <label for="eventSelect" class="labelInfo">Selectionner l'evenement à modifier</label>
+                    <input type="date" name="eventSelect" id="eventSelect" placeholder="Date de l'event" min="2024-09-01" value="2024-09-01" required>
 
 
-            <label for="eventTitle">Titre</label>
-            <input type="text" name="eventTitle" id="eventTitle" placeholder="Nouveau titre" required>
+                    <label for="eventTitle">Titre</label>
+                    <input type="text" name="eventTitle" id="eventTitle" placeholder="Nouveau titre" required>
 
-            <label for="eventDate">Date</label>
-            <input type="text" name="eventDescription" id="eventDate" placeholder="Nouvelle description" required>
+                    <label for="eventDate">Description</label>
+                    <input type="text" name="eventDescription" id="eventDate" placeholder="Nouvelle description" required>
 
-            <button type="submit" name="eventEdit">Modifier/Ajouter</button>
-            <button type="submit" name="eventDelete">Supprimer</button>
-        </form>
-    </div>
+                    <button type="submit" name="eventEdit" class="button">Modifier/Ajouter</button>
+                    <button type="submit" name="eventDelete" class="button secondary">Supprimer</button>
+                </form>
 
+                <?= $dispayEvent ?>
+            </div>
+        </div>
+
+
+    </main>
+    <?php include '../partials/footer.php'?>
 </body>
 </html>

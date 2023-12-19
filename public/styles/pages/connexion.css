@@ -1,0 +1,41 @@
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    width: calc(100% - 40px);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+main h1 {
+    font-size: 48px;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+main form {
+    width: 100%;
+}
+
+main form label {
+    display: none;
+}
+
+main form input:not([type="submit"]) {
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid #8079D4;
+    font-size: 14px;
+    transition: 0.3s;
+}

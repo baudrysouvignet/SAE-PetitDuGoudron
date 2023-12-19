@@ -6,7 +6,34 @@
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, p, a {
+body {
+    background: #F9F9F9;
+}
+
+.button {
+    font-size: 14px;
+    padding: 3px 15px;
+    border-radius: 20px;
+    background-color: #8079D4;
+    border: 1px solid #8079D4;
+    color: #F9F9F9;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.button.secondary {
+    background-color: #F9F9F9;
+    border: 1px solid #8079D4;
+    color: #8079D4;
+}
+
+.button:hover, .button.secondary:hover {
+    background-color: #4B4FA4;
+    border: 1px solid #4B4FA4;
+    color: #F9F9F9;
+}
+
+h1, h2, h3, h4, p, a, label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     line-height: normal;
