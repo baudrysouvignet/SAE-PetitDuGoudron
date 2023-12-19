@@ -44,17 +44,17 @@ $isValue = isset($infoForm);
 
     <div>
         <label for="allergy">Allergies :</label>
-        <textarea id="allergy" name="allergy" rows="1" <?= $isValue ? 'value ='. $infoForm['allergy'] : ""?>></textarea>
+        <textarea id="allergy" name="allergy" rows="1" ><?= $isValue ? $infoForm['allergy'] : ""?></textarea>
     </div>
 
     <div>
         <label for="health">Conditions Médicales :</label>
-        <textarea id="health" name="health" rows="1" <?= $isValue ? 'value ='. $infoForm['health'] : ""?>></textarea>
+        <textarea id="health" name="health" rows="1"><?= $isValue ? $infoForm['health'] : ""?></textarea>
     </div>
 
     <div>
         <label for="drug">Médicaments :</label>
-        <textarea id="drug" name="drug" rows="1"  <?= $isValue ? 'value ='. $infoForm['drug'] : ""?>></textarea>
+        <textarea id="drug" name="drug" rows="1" ><?= $isValue ? $infoForm['drug'] : ""?></textarea>
     </div>
 
     <div>

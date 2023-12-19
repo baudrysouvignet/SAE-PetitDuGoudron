@@ -50,6 +50,8 @@ $btnName = "S'inscrire";
 
 ?>
 
+<link rel="stylesheet" href="../../styles/partials/participationForm.css"">
+
 <h2>Formulaire d'inscription</h2>
 
 <?php

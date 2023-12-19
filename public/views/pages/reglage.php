@@ -93,7 +93,6 @@ if (isset($_POST['participer'])) {
         idParticipation: $_POST['id_form']
     );
 
-
     header ("Location: reglage.php");
     exit();
 }

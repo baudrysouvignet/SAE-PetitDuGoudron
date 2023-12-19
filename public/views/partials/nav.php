@@ -30,6 +30,10 @@ if ($current_page === 'index.php') {
                         <a href="#"><img src="<?= $beforLink.'img/nav/account.svg'?>" alt="Compte">Compte</a>
                         <div class="nav-item-wrapper"></div>
                     </div>
+                    <div class="nav-link">
+                        <a href="#"><img src="<?= $beforLink.'img/nav/account.svg'?>" alt="Compte">Participer</a>
+                        <div class="nav-item-wrapper"></div>
+                    </div>
                 </div>
             </div>
         </div>
