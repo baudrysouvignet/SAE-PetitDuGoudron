@@ -11,7 +11,6 @@ $database = DatabaseManager::getInstance();
 $calendar = recoverAllEvents(
     database: $database
 );
-
 ?>
 
 
