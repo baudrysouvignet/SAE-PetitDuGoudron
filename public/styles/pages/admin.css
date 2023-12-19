@@ -1,0 +1,196 @@
+main {
+    margin-top: 90px;
+    min-height: 60vh;
+}
+
+main, h1 {
+    display: flex;
+    gap: 100px;
+    width: calc(100% - 100px);
+    margin: 70px auto;
+}
+
+h1 {
+    line-height: 120%;
+    margin-top: 160px;
+    transition: 0.3s;
+}
+
+main nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    max-width: 450px;
+}
+
+main nav > a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+    text-decoration: none;
+    width: 100%;
+    transition: 0.2s;
+
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    margin-bottom: -3px;
+}
+
+main nav > a:hover {
+    background-color: rgba(128, 121, 212, 0.06);
+}
+
+main nav > a p {
+    font-size: 24px;
+}
+
+main nav img {
+    width: 30px;
+    height: 30px;
+}
+
+main > div {
+    flex: 1 1;
+}
+
+main .content > * {
+    display: none;
+}
+
+main .content > *.activate {
+    display: block;
+}
+
+main .content > *:not(:last-child) > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+}
+
+main .content > *:not(:last-child) h2 {
+    margin-bottom: 20px;
+}
+
+.navManagement > a > img {
+    transition: transform 0.3s;
+}
+
+.navManagement > a:not(.active):hover > img {
+    transform: rotate(-100deg);
+}
+
+.navManagement > a:not(.active) > img {
+    transform: rotate(-90deg);
+}
+
+.navManagement > a.active > img {
+    transform: rotate(-180deg);
+}
+
+main .cal > div {
+    width: 100%;
+    background-color: #EEE;
+    border-radius: 10px 50px;
+    padding: 30px 20px;
+    margin-bottom: 50px;
+}
+
+main .cal > h2, main .cal > form{
+    margin-bottom: 35px;
+}
+
+main .cal > div > p:first-child {
+    font-weight: 800;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+main .cal > div > p:nth-child(2) {
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.cal form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cal form label:not(.labelInfo) {
+    display: none;
+}
+
+.cal form input {
+    flex: 1 1;
+}
+
+@media screen and (max-width: 1250px) {
+     .title {
+        font-size: 48px;
+    }
+    main h2, .cal > div > p:first-child {
+        font-size: 30px !important;
+    }
+
+    main h2, .cal > div > p:last-child {
+        font-size: 16px !important;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .title {
+        margin-bottom: 0;
+    }
+    main {
+        flex-direction: column;
+        gap: 50px;
+        margin-top: 30px;
+    }
+
+    main nav  {
+        flex: unset;
+        margin-top: 0;
+        max-width: unset;
+    }
+
+    .navManagement > a:not(.active):hover > img {
+        transform: rotate(-100deg);
+    }
+
+    .navManagement > a:not(.active) > img {
+        transform: rotate(-180deg);
+    }
+
+    .navManagement > a.active > img {
+        transform: rotate(-90deg);
+    }
+
+    main nav a p {
+        font-size: 20px;
+    }
+    main nav a img {
+        height: 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 35px !important;
+    }
+
+    main, h1 {
+        width: calc(100% - 40px);
+    }
+
+    .content form {
+        display: flex;
+        gap: 10px;
+    }
+    .content > div > div {
+        gap: 10px;
+    }
+}
