@@ -79,27 +79,49 @@ if (isset($_SESSION['user_info'])) {
 
 ?>
 
-<form action="connexion.php" method="post">
-    <label for="mail">Mail</label>
-    <input type="text" name="mail" id="mail" placeholder="mail">
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="password">
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php include '../partials/head.php'?>
+    <link rel="stylesheet" href="../../styles/pages/connexion.css">
+    <script src="../../scripts/pages/admin.js" defer></script>
+    <title>PDG - Admin</title>
+</head>
+<body>
 
-    <input type="submit" name="login" value="Se connecter">
-    <input type="submit" name="register" value="S'inscire">
-</form>
+<?php include '../partials/nav.php'?>
 
-<?php
-if ($isError) {
-   echo "<p>Identifiants ou mot de passe incorrect</p>";
-}
-?>
+<main>
+    <h1 class="title">Bienvenue !</h1>
+    <form action="connexion.php" method="post">
+        <label for="mail">Mail</label>
+        <input type="text" name="mail" id="mail" placeholder="mail">
 
-<?php
-if ($isCreated) {
-    echo "<p>Le compte à bien été crée</p>";
-} else if ($isCreated === false) {
-    echo "<p>Le compte n'a pas pu être crée</p>";
-}
-?>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Mot de passe">
+
+        <input class="button" type="submit" name="login" value="Se connecter">
+        <input class="button" type="submit" name="register" value="S'inscire">
+    </form>
+
+    <?php
+    if ($isError) {
+        echo "<p>Identifiants ou mot de passe incorrect</p>";
+    }
+    ?>
+
+    <?php
+    if ($isCreated) {
+        echo "<p>Le compte à bien été crée</p>";
+    } else if ($isCreated === false) {
+        echo "<p>Le compte n'a pas pu être crée</p>";
+    }
+    ?>
+</main>
+<?php include '../partials/footer.php'?>
+</body>
+</html>
+
+
+
