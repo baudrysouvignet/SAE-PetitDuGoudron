@@ -176,6 +176,10 @@ if (isset($_POST['eventDelete'])) {
                 <p>Le Calendrier</p>
                 <img src="../img/arrow_back.svg" alt="">
             </a>
+            <a href="forum.php" id="calManagement">
+                <p>Le Forum</p>
+                <img src="../img/arrow_back.svg" alt="">
+            </a>
         </nav>
 
         <div class="content">
