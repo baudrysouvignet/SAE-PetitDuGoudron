@@ -50,10 +50,31 @@ $btnName = "S'inscrire";
 
 ?>
 
-<link rel="stylesheet" href="../../styles/partials/participationForm.css"">
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php include '../partials/head.php'?>
+    <title>Document</title>
+    <link rel="stylesheet" href="../../styles/partials/participationForm.css"">
+    <link rel="stylesheet" href="../../styles/pages/participer.css"">
+</head>
+<body>
+<?php include '../partials/nav.php'?>
 
-<h2>Formulaire d'inscription</h2>
+<main>
+    <h1>Formulaire d'inscription</h1>
 
-<?php
-include "../../../partials/participationForm.php";
-?>
+    <div class="contentForm">
+        <?php
+        include "../../../partials/participationForm.php";
+        ?>
+    </div>
+</main>
+
+<?php include '../partials/footer.php'?>
+
+</body>
+</html>
+
+
+
