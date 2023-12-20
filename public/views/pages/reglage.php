@@ -68,29 +68,6 @@ foreach ($form  as $value) {
     ];
 }
 
-?>
-
-<h1><?= $user->loggedInUser[0]['mail'] ?> <?= $user->loggedInUser[0]['role'] == 'ROLE_ADMIN' ? '(admin)' : '' ?></h1>
-
-<form action="reglage.php" method="post">
-    <label for="oldPassword">Ancien mot de passe</label>
-    <input type="password" name="oldPassword" id="oldPassword" placeholder="Ancien mot de passe">
-
-    <label for="newPassword">Nouveau mot de passe</label>
-    <input type="password" name="newPassword" id="newPassword" placeholder="Nouveau mot de passe">
-
-    <input type="submit" name="changePassword" value="Changer le mot de passe">
-</form>
-
-<?php
-if (isset($passwordIsChanged)) {
-    if ($passwordIsChanged) {
-        echo "<p>Le mot de passe à bien été changé</p>";
-    } else {
-        echo "<p>Le mot de passe n'a pas pu être changé</p>";
-    }
-}
-
 if (isset($_POST['participer'])) {
     $data = [
         "firstName" => $_POST['firstName'],
@@ -119,42 +96,110 @@ if (isset($_POST['participer'])) {
     header ("Location: reglage.php");
     exit();
 }
+
 ?>
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php include '../partials/head.php'?>
+    <title>Réglages</title>
+    <link rel="stylesheet" href='../../styles/pages/reglage.css'>
+    <link rel="stylesheet" href='../../styles/partials/participationForm.css'>
 
-<form action="reglage.php" method="post">
-    <label for="password">Mot de passe</label>
-    <input type="password" name="password" id="password" placeholder="Mot de passe">
+    <script src="../../scripts/pages/reglage.js" defer></script>
+</head>
+<body>
+<?php include '../partials/nav.php'?>
 
-    <label for="newMail">Nouveau mail</label>
-    <input type="text" name="newMail" id="newMail" placeholder="Nouveau mail" autocomplete="off">
-
-    <input type="submit" name="changeMail" value="Changer le mail">
-</form>
-
-<?php
-if (isset($mailIsChanged)) {
-    if ($mailIsChanged) {
-        echo "<p>Le mail à bien été changé</p>";
-    } else {
-        echo "<p>Le mail n'a pas pu être changé</p>";
+<main>
+    <?php
+    if (isset($passwordIsChanged)) {
+        if ($passwordIsChanged) {
+            echo "<p class='info ok'>Le mot de passe à bien été changé</p>";
+        } else {
+            echo "<p class='info no'>Le mot de passe n'a pas pu être changé</p>";
+        }
     }
-}
-?>
+    ?>
+    <h1>Paramètre du compte</h1>
+    <h2><?= $user->loggedInUser[0]['mail'] ?> <?= $user->loggedInUser[0]['role'] == 'ROLE_ADMIN' ? '(admin)' : '' ?></h2>
 
-<form action="reglage.php" method="post">
-    <input type="submit" name="deconnexion" value="Déconnexion">
-</form>
+    <form class="disconnect" action="reglage.php" method="post">
+        <input class="button" type="submit" name="deconnexion" value="Déconnexion">
+    </form>
+
+    <form action="reglage.php" method="post">
+        <div>
+            <label for="oldPassword">Ancien mot de passe</label>
+            <input type="password" name="oldPassword" id="oldPassword" placeholder="Ancien mot de passe">
+        </div>
+
+        <div>
+            <label for="newPassword">Nouveau mot de passe</label>
+            <input type="password" name="newPassword" id="newPassword" placeholder="Nouveau mot de passe">
+        </div>
+        <input class="button" type="submit" name="changePassword" value="Modifier">
+    </form>
+
+    <form action="reglage.php" method="post">
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" placeholder="Mot de passe">
+        </div>
+        <div>
+            <label for="newMail">Nouveau mail</label>
+            <input type="text" name="newMail" id="newMail" placeholder="Nouveau mail" autocomplete="off">
+        </div>
+        <input class="button"  type="submit" name="changeMail" value="Modifier">
+    </form>
+
+    <?php
+    if (isset($mailIsChanged)) {
+        if ($mailIsChanged) {
+            echo "<p>Le mail à bien été changé</p>";
+        } else {
+            echo "<p>Le mail n'a pas pu être changé</p>";
+        }
+    }
+    ?>
+
+    <?php
+    if (count ($formData) > 0) {
+        echo "<h2 class='part'>Vos dossiers d'inscription </h2>";
+    }
+    ?>
+
+    <nav class="navManagement">
+        <?php
+        foreach ($formData as $key => $form) {
+            $infoForm = $form;
+            $id = $formData[$key]['ID_Insription'];
+            echo <<<HTML
+        <a id="{$id}">
+            <p>{$infoForm['firstName']} | N°{$id}</p>
+            <img src="../img/arrow_back.svg" alt="">
+        </a>
+HTML;
+
+        }
+        ?>
+    </nav>
 
 
-<?php
-foreach ($formData as $key => $form) {
-    $infoForm = $form;
-    $id = $formData[$key]['ID_Insription'];
-    $btnName = "Enregistrer (".$infoForm['firstName'].")";
-    $field = 'reglage.php';
 
-    echo '<div class="'.$id.'"><h3>Inscription N° '.$id.'</h3>';
-    include ('../../../partials/participationForm.php');
-    echo '</div>';
-}
-?>
+    <?php
+    foreach ($formData as $key => $form) {
+        $infoForm = $form;
+        $id = $formData[$key]['ID_Insription'];
+        $btnName = "Enregistrer (".$infoForm['firstName'].")";
+        $field = 'reglage.php';
+
+        echo '<div class="itemsInsc '.$id.'" data-id="'.$id.'"><h3>Inscription N° '.$id.'</h3>';
+        include ('../../../partials/participationForm.php');
+        echo '</div>';
+    }
+    ?>
+</main>
+<?php include '../partials/footer.php'?>
+</body>
+

@@ -1,0 +1,39 @@
+body {
+    background-color: rgba(128, 121, 212, 0.2);
+}
+
+main {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(100% - 40px);
+    max-width: 500px;
+    margin: 160px auto;
+}
+
+.contentForm {
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: #F9F9F9;
+}
+
+.contentForm input:not([type="submit"]), .sexe, textarea, #autorisation_parentale {
+    background-color: #F9F9F9 !important;
+}
+
+h1 {
+    font-size: 55px;
+    line-height: 120%;
+    width: calc(100% - 40px) ;
+    text-align: center;
+    margin: 50px 0;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        text-align: left;
+        font-size: 35px !important;
+    }
+}

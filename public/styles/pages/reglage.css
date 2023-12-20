@@ -1,0 +1,159 @@
+main {
+    width: calc(100% - 100px);
+    margin: 0 auto;
+    margin-top: 140px;
+    min-height: calc(100vh - 140px);
+}
+
+main h1 {
+    margin-bottom: 80px;
+    line-height: 120%;
+}
+
+main h2 {
+    margin-bottom: 10px;
+}
+
+main h2.part {
+    margin-top: 100px;
+}
+
+main form {
+    display: flex;
+    gap: 20px 50px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+
+main form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1;
+}
+
+.disconnect{
+    margin-bottom: 40px;
+}
+
+main form label {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+main form input:not([type="submit"]) {
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid #8079D4;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.info {
+    padding: 10px 30px;
+    width: 100%;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+}
+.info.ok {
+    background-color: #D4F0E8;
+    color: #2D9C8F;
+}
+
+.info.no {
+    background-color: #F0D4D4;
+    color: #9C2D2D;
+}
+
+.itemsInsc {
+    margin-top: 50px;
+}
+
+.itemsInsc form {
+    max-width: none;
+}
+
+.itemsInsc h3 {
+    margin-bottom: 20px;
+}
+
+.navManagement > a > img {
+    transition: transform 0.3s;
+}
+
+.navManagement > a:not(.active):hover > img {
+    transform: rotate(-100deg);
+}
+
+.navManagement > a:not(.active) > img {
+    transform: rotate(-90deg);
+}
+
+.navManagement > a.active > img {
+    transform: rotate(-180deg);
+}
+
+
+main nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+main nav > a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+    text-decoration: none;
+    width: 100%;
+    transition: 0.2s;
+
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    margin-bottom: -3px;
+}
+
+main nav > a:hover {
+    background-color: rgba(128, 121, 212, 0.06);
+}
+
+main nav > a p {
+    font-size: 24px;
+}
+
+main nav img {
+    width: 30px;
+    height: 30px;
+}
+
+.itemsInsc {
+    display: none;
+}
+
+.itemsInsc.activate {
+    display: block;
+}
+
+footer {
+    margin-top: 300px;
+}
+
+@media screen and (max-width: 1250px) {
+    h1 {
+        font-size: 48px;
+        margin-bottom: 40px !important;
+    }
+    h2 {
+        font-size: 30px !important;
+    }
+    h3 {
+        font-size: 20px !important;
+    }
+}

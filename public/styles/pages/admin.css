@@ -3,6 +3,11 @@ main {
     min-height: 60vh;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 main, h1 {
     display: flex;
     gap: 100px;

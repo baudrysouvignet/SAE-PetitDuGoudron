@@ -10,6 +10,10 @@ body {
     background: #F9F9F9;
 }
 
+textarea {
+    resize: none;
+}
+
 .button {
     font-size: 14px;
     padding: 3px 15px;
@@ -17,6 +21,7 @@ body {
     background-color: #8079D4;
     border: 1px solid #8079D4;
     color: #F9F9F9;
+    height: fit-content;
     transition: 0.3s;
     cursor: pointer;
 }
