@@ -55,7 +55,7 @@ function recoverAllSpace (
     DatabaseManager $databaseManager
 ):array
 {
-    $querySpace = $databaseManager->select ('SELECT * FROM Space');
+    $querySpace = $databaseManager->select ('SELECT * FROM Space order by ID_Space desc');
     $queryPost = $databaseManager->select ('SELECT * FROM Post order by CreatedAt desc');
 
     $spaceList = [];

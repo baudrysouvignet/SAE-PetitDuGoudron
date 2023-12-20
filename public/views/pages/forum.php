@@ -113,7 +113,7 @@ if (isset($_POST['banMan'])) {
 <?php include ('../partials/nav.php'); ?>
 
 <div class="forum">
-    <h1>Votre voix compte ici !</h1>
+    <h1>Votre voix compte ici !</h1>
     <p>Rencontrez la communauté des Petits du Goudron et partagez vos expériences</p>
     <form action="forum.php" method="post">
         <label for="title">Question</label>

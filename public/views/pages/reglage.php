@@ -36,6 +36,8 @@ if (isset($_POST['changeMail'])) {
         password: $_POST['password'],
         newMail: $_POST['newMail']
     );
+    header ("Location: reglage.php");
+    exit();
 }
 
 //----------------
