@@ -47,8 +47,6 @@ $calendar = recoverAllEvents(
 
 
 
-
-
 <h1>Calendar</h1>
 <?php
 foreach ($calendar as $event) {
