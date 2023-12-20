@@ -1,0 +1,170 @@
+.forum {
+    margin-top: 89px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0;
+    gap: 20px;
+}
+
+.forum * {
+    text-align: left;
+    max-width: calc(100% - 40px);
+}
+
+.forum label {
+    display: none;
+}
+
+.forum form {
+    margin-top: 20px;
+    width: calc(100% - 40px);
+    max-width: 900px;
+    display: flex;
+    gap: 20px;
+    padding: 20px 60px;
+    border-radius: 100Px;
+    background-color: #F9F9F9;
+}
+
+.forum input:not([type="submit"]) {
+    flex: 1 1;
+    padding: 8px 15px;
+    font-size: 18px;
+    border: 2px solid #EAEAEA;
+    border-radius: 5px;
+}
+.forum .button {
+    padding: 8px 30px;
+    font-size: 18px !important
+}
+
+main {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 750px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.space, .postsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.space:before {
+    z-index: -1;
+    margin-left: 30px;
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 3px;
+    background-color: #EAEAEA;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 30px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #EAEAEA;
+    box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.nameInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nameInfo img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nameInfo p {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+.contentInfo {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contentInfo p {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+}
+.contentInfo h3 {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.management {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    font-size: 12px;
+}
+
+.formAnswer {
+    margin-top: 10px;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    gap: 22px;
+}
+
+.formAnswer input:not([type="submit"]) {
+    flex: 1 1;
+    padding: 5px 10px;
+    border: 2px solid #EAEAEA;
+    border-radius: 5px;
+}
+
+.formAnswer .button {
+    height: auto;
+    border-radius: 5px;
+}
+
+input[type="submit"]:not(.button), .input {
+    padding: 0;
+    background-color: unset;
+    border: none;
+    color: #4B4FA4;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input[type="submit"]:not(.button):hover, .input:hover {
+    color: #8079D4;
+}
+
+.postsContent {
+    display: none;
+}
+.postsContent.active {
+    display: flex;
+}

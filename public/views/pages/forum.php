@@ -102,7 +102,19 @@ if (isset($_POST['banMan'])) {
 
 ?>
 
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php include_once ('../partials/head.php'); ?>
+    <link rel="stylesheet" href="../../styles/pages/forum.css">
+    <title>Forum</title>
+</head>
+<body>
+<?php include ('../partials/nav.php'); ?>
 
+<div class="forum">
+    <h1>Votre voix compte ici !</h1>
+    <p>Rencontrez la communauté des Petits du Goudron et partagez vos expériences</p>
     <form action="forum.php" method="post">
         <label for="title">Question</label>
         <input type="text" name="title" id="title" placeholder="Titre" maxlength="250">
@@ -110,9 +122,13 @@ if (isset($_POST['banMan'])) {
         <label for="description">Description</label>
         <input type="text" name="description" id="description" placeholder="Description">
 
-        <input type="submit" name="addSpace" value="Ajouter un espace">
-    </form>
+        <input class="button" type="submit" name="addSpace" value="Ajouter un espace">
 
+        <script src="../../scripts/pages/forum.js" defer></script>
+    </form>
+</div>
+
+<main>
 <?php
 foreach ($spaceList as $space) {
     $name = 'connexion';
@@ -128,35 +144,44 @@ foreach ($spaceList as $space) {
 
     $posts = $space->postList;
 
+    $nameAccount = strstr($space->getData()['user'], '@', true);
+
     /*Html for question part*/
     $html = <<<HTML
     <article class="space">
-        <div class="info">
-            <h3>{$space->getData()['title']}</h3>
-            <p>{$space->getData()['description']}</p>
-            <p>{$space->getData()['user']}</p>
-            
-        </div> 
-        <form action="forum.php" method="post">
-            <input type="hidden" name="spaceID" value="{$space->getData()['id']}">
-            <label for="comment" style="display: none">Commentaire</label>
-            <input type="text" name="comment" id="comment" placeholder="Votre commentaire">
-            <input type="submit" name="{$name}" value="{$field}">
-        </form>
-HTML;
+        <div class="post">
+            <div class="info">
+                <div class="nameInfo">
+                    <img src="https://images.unsplash.com/photo-1695653422853-3d8f373fb434?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="" srcset="">
+                    <p>@{$nameAccount}</p>
+                </div>
+                <div class="contentInfo">
+                    <h3>{$space->getData()['title']}</h3>
+                    <p>{$space->getData()['description']}</p>
+                </div>
+            </div> 
+            <form class="formAnswer" action="forum.php" method="post">
+                <input type="hidden" name="spaceID" value="{$space->getData()['id']}">
+                <label for="comment" style="display: none">Commentaire</label>
+                <input type="text" name="comment" id="comment" placeholder="Votre commentaire">
+                <input class="button" type="submit" name="{$name}" value="{$field}">
+            </form>
+            <div class="management">
+    HTML;
 
-    if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')) {
-        $html .= <<<HTML
-        <form action="forum.php" method="post">
-            <input type="hidden" name="spaceID" value="{$space->getData ()['id']}">
-            <input type="submit" name="spaceDelete" value="Supprimer la question">
-        </form>
+        if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($space->getData()['userId'] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')) {
+            $html .= <<<HTML
+            <form action="forum.php" method="post">
+                <input type="hidden" name="spaceID" value="{$space->getData ()['id']}">
+                <input class="" type="submit" name="spaceDelete" value="Supprimer">
+            </form>
 HTML;
     }
 
     if (count($posts) > 0) {
-        $html .= "<button class='more'>Voir les réponses</button>";
-        $html .= "<div class='postsContent'>";
+        $idSpace= $space->getData()['id'];
+        $html .= "<button name=".$idSpace." class='more input'>Voir les réponses (".count($posts).")</button></div></div>";
+        $html .= "<div class='postsContent' id='.$idSpace.'>";
 
         foreach ($posts as $post) {
             $userPost = new userEntity(
@@ -184,16 +209,26 @@ HTML;
             }
 
 
+            $nameAccount = strstr($post->getData()['user'][0], '@', true);
+
+            if ($userPost->loggedInUser[0]['role'] == 'ROLE_ADMIN') {
+                $nameAccount = $nameAccount . ' (Admin)';
+            }
+
                 /*HTML for post part*/
             $html .= <<<HTML
             <div class="post">
                 <div class="info">
-                    <p>{$post->getData()['content']}</p>
-                    <p>{$post->getData()['createdAt']}</p>
-                    <p>{$post->getData()['user'][0]}</p>
-                    {$banFields}
+                    <div class="nameInfo">
+                        <img src="https://images.unsplash.com/photo-1695653422853-3d8f373fb434?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="" srcset="">
+                        <p>@{$nameAccount} - {$post->getData()['createdAt']}</p>
+                    </div>
+                    <div class="contentInfo">
+                        <p>{$post->getData()['content']}</p>
+                    </div>
                 </div>
-            </div>
+            <div class="management">
+                {$banFields}
 HTML;
             if (isset($user->loggedInUser[0]['ID_Utilisateur']) && ($post->getData()['user'][1] == $user->loggedInUser[0]['ID_Utilisateur'] || $user->loggedInUser[0]['role'] == 'ROLE_ADMIN')){
                 $html .= <<<HTML
@@ -203,12 +238,20 @@ HTML;
                     </form>
 HTML;
             }
+            $html .= "</div></div>";
         }
 
         $html .= "</div>";
+    } else {
+        $html .= "</div></div>";
     }
 
     $html .= "</article>";
 
     echo $html;
-}
+}?>
+</main>
+
+</body>
+</html>
+
