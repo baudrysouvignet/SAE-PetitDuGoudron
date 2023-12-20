@@ -105,6 +105,8 @@ if (isset($_POST['participer'])) {
     <title>Réglages</title>
     <link rel="stylesheet" href='../../styles/pages/reglage.css'>
     <link rel="stylesheet" href='../../styles/partials/participationForm.css'>
+
+    <script src="../../scripts/pages/reglage.js" defer></script>
 </head>
 <body>
 <?php include '../partials/nav.php'?>
@@ -167,6 +169,24 @@ if (isset($_POST['participer'])) {
     }
     ?>
 
+    <nav class="navManagement">
+        <?php
+        foreach ($formData as $key => $form) {
+            $infoForm = $form;
+            $id = $formData[$key]['ID_Insription'];
+            echo <<<HTML
+        <a id="{$id}">
+            <p>{$infoForm['firstName']} | N°{$id}</p>
+            <img src="../img/arrow_back.svg" alt="">
+        </a>
+HTML;
+
+        }
+        ?>
+    </nav>
+
+
+
     <?php
     foreach ($formData as $key => $form) {
         $infoForm = $form;
@@ -174,7 +194,7 @@ if (isset($_POST['participer'])) {
         $btnName = "Enregistrer (".$infoForm['firstName'].")";
         $field = 'reglage.php';
 
-        echo '<div class="itemsInsc '.$id.'"><h3>Inscription N° '.$id.'</h3>';
+        echo '<div class="itemsInsc '.$id.'" data-id="'.$id.'"><h3>Inscription N° '.$id.'</h3>';
         include ('../../../partials/participationForm.php');
         echo '</div>';
     }

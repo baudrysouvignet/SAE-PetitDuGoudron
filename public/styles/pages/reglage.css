@@ -81,6 +81,70 @@ main form input:not([type="submit"]) {
     margin-bottom: 20px;
 }
 
+.navManagement > a > img {
+    transition: transform 0.3s;
+}
+
+.navManagement > a:not(.active):hover > img {
+    transform: rotate(-100deg);
+}
+
+.navManagement > a:not(.active) > img {
+    transform: rotate(-90deg);
+}
+
+.navManagement > a.active > img {
+    transform: rotate(-180deg);
+}
+
+
+main nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+main nav > a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+    text-decoration: none;
+    width: 100%;
+    transition: 0.2s;
+
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    margin-bottom: -3px;
+}
+
+main nav > a:hover {
+    background-color: rgba(128, 121, 212, 0.06);
+}
+
+main nav > a p {
+    font-size: 24px;
+}
+
+main nav img {
+    width: 30px;
+    height: 30px;
+}
+
+.itemsInsc {
+    display: none;
+}
+
+.itemsInsc.activate {
+    display: block;
+}
+
+footer {
+    margin-top: 300px;
+}
+
 @media screen and (max-width: 1250px) {
     h1 {
         font-size: 48px;
