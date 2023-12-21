@@ -154,11 +154,3 @@ HTML;
 }
 ?>
 </body>
-
-<style> span{
-        background: #ffffff;
-    }
-       span::before {
-           background: white;
-       }
-</style>
