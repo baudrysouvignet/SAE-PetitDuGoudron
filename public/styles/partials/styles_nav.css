@@ -126,6 +126,17 @@ span::before {
     margin-right: 10px;
 }
 
+@media screen and (max-width: 687px) {
+    .nav-link a {
+        font-size: 45px;
+    }
+
+    .nav-link a img {
+        width: 30px;
+    }
+
+}
+
 @media screen and (max-width: 585px) {
     .nav-link a {
         font-size: 40px;
@@ -136,6 +147,17 @@ span::before {
     }
 
 }
+
+@media screen and (max-width: 452px) {
+    .nav-link a {
+        font-size: 30px;
+    }
+
+    .nav-link a img {
+        width: 30px;
+    }
+}
+
 
 @media screen and (max-width: 376px) {
     .nav-link a {
