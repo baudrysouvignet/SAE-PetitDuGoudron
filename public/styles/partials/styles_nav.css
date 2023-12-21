@@ -147,3 +147,14 @@ span::before {
     }
 
 }
+
+@media screen and (max-width: 281px) {
+    .nav-link a {
+        font-size: 23px;
+    }
+
+    .nav-link a img {
+        width: 23px;
+    }
+
+}
