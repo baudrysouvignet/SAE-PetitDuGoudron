@@ -1,0 +1,295 @@
+/* Partie de la hero section */
+
+.container-hero-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+
+@media (max-width: 900px) {
+
+}
+.copy {
+    position: relative;
+    z-index: 3;
+    top: -10%;
+}
+
+.spline {
+    position: absolute;
+    top: 20vh;
+    width: 50%;
+    height: 80vh;
+    z-index: 2;
+}
+
+@media (max-width: 1200px) {
+    .spline {
+        width: 100%;
+        transform: scale(0.5);
+    }
+}
+
+.hero-section {
+    width: 100%;
+    height: 90vh;
+    background: #8079D4;
+    padding: 2em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h1 {
+    font-size: 10vw;
+}
+
+.row-1,
+.row-3 {
+    /*font-family: "Arial";*/
+}
+
+.row-2 {
+    /*font-family: "Latitude";*/
+    font-style: italic;
+
+}
+
+.row-1 {
+    align-items: flex-start;
+}
+
+.row-1 .p {
+    text-transform: uppercase;
+    padding: 0 2em;
+    font-size: 24px;
+}
+
+.row-2 {
+    padding-left: 5em;
+}
+
+.row-3 {
+    padding-left: 4em;
+}
+
+.span {
+    width: 300px;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .row-1 {
+        flex-direction: column-reverse;
+    }
+
+    .h1 {
+        font-size: 13vw;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content span {
+    /*font-family: "Latitude";*/
+    font-style: italic;
+}
+
+.text {
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 400px) {
+    .h1 {
+        font-size: 10vw;
+    }
+    .span {
+        margin-top: 30%;
+        margin-right: 10%;
+        width: 100%;
+    }
+
+    .row-1 {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .spline {
+        display: none;
+    }
+}
+
+/* Partie de la team section */
+
+.cursor {
+    position: absolute;
+    font-size: 50px;
+    z-index: 999999;
+}
+
+.cursor-blanc i {
+    color: #fff;
+}
+
+.modal-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-team-section {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+}
+
+/*.title-team-section {
+    position: relative;
+    top: 10%;
+    z-index: 999999;
+}*/
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nom-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.nom-wrapper.bg-1 {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.h1-team-section {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    transform: translate(-30%, -30%);
+    text-align: center;
+    font-size: 180px;
+    text-transform: uppercase;
+    font-weight: 400;
+    width: 100%;
+    white-space: nowrap;
+    animation: nom 10s linear infinite;
+}
+
+@keyframes nom {
+    0% {
+        transform: translate(0%, -50%);
+    }
+
+    50% {
+        transform: translate(-5%, -50%);
+    }
+
+    50.5% {
+        transform: translate(-5%, -50%);
+    }
+
+    100% {
+        transform: translate(0%, -50%);
+    }
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 700px;
+}
+
+.modal-images {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+.role {
+    margin: 5px 0;
+}
+
+.img {
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    /* fais avec https://bennettfeely.com/ */
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.img#bg-1 {
+    /* fais avec https://bennettfeely.com/ */
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.info {
+    margin-top: 15px;
+}
+
+.bg-1 {
+    background: #fff;
+}
+
+.bg-2 {
+    background: #b39ad7;
+}
+
+.bg-3 {
+    background: #84bd37;
+}
+
+.bg-4 {
+    background: #ff5340;
+}
+
+@media screen and(max-width: 900px) {
+    .modal {
+        width: 450px;
+        height: 650px;
+    }
+
+    #modal-images {
+        width: 100%;
+        height: 500px;
+    }
+
+    .img {
+        width: 100%;
+        height: 500px;
+    }
+}

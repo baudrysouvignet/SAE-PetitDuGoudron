@@ -2,9 +2,8 @@
     width: 100%;
     height: 89px;
     overflow: hidden;
-    background: #fff;
     position: fixed;
-    z-index: 3;
+    z-index: 999;
     top: 0;
 }
 
@@ -83,7 +82,6 @@ span::before {
     justify-content: center;
     align-items: center;
     visibility: hidden;
-    z-index: 2;
 }
 
 .nav-responsive {
@@ -146,6 +144,17 @@ span::before {
 
     .nav-link a img {
         width: 27px;
+    }
+
+}
+
+@media screen and (max-width: 281px) {
+    .nav-link a {
+        font-size: 23px;
+    }
+
+    .nav-link a img {
+        width: 23px;
     }
 
 }
