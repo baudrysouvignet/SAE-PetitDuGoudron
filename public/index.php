@@ -41,9 +41,54 @@ $calendar = recoverAllEvents(
     </div>
 </div>
 <div class="spline">
-    <iframe src="https://my.spline.design/snowman-1dc179c3becd50305885dabd8e7a5e90/" frameborder="0"
+    <iframe src="https://my.spline.design/snowman-1dc179c3becd50305885dabd8e7a5e90/"
             width="100%" height="100%"></iframe>
 </div>
+
+<div class="container-advantages-section">
+    <div class="header-advantages-section">
+        <h1>Les petits du goudron <br />c'est quoi ? </h1>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="card-cta">
+                <p>04 71 04 11 36</p>
+            </div>
+            <div class="card-fg">
+                <p class="case-study">Petits</p>
+                <p class="review">
+                    Une colonie de vacances exceptionnelle, où l'esprit d'équipe et l'amusement sont au rendez-vous.
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-cta">
+                <p>04 71 04 11 36</p>
+            </div>
+            <div class="card-fg">
+                <p class="case-study">Du</p>
+                <p class="review">
+                    Les participants auront l'opportunité de vivre des moments uniques, entre découvertes ludiques et activités
+                    enrichissantes.
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-cta">
+                <p>04 71 04 11 36</p>
+            </div>
+            <div class="card-fg">
+                <p class="case-study">Goudron</p>
+                <p class="review">
+                    Les Petits du Goudron célèbrent l'esprit d'aventure, favorisent l'amitié et créent des souvenirs qui
+                    dureront toute une vie.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="title-team-section">Notre équipe.</h1>
 
 <div class="container-team-section">
 
@@ -91,6 +136,10 @@ $calendar = recoverAllEvents(
 <div class="cursor">
     <i class="ph-light ph-arrow-left"></i>
 </div>
+
+
+
+
 
 <h1>Calendar</h1>
 <?php
