@@ -5,7 +5,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: #F9F9F9;
 }
 
 
@@ -139,6 +139,130 @@
     }
 }
 
+
+/* Partie de la advantages section */
+
+.container-advantages-section {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3.5em;
+}
+
+.header-advantages-section h1 {
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    gap: 10em;
+}
+
+@media (max-width: 900px) {
+    body {
+        height: 100%;
+    }
+
+    .container-advantages-section {
+        padding: 10em 0;
+        height: max-content;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 420px;
+    border-radius: 10px;
+    perspective: 1400px;
+    cursor: pointer;
+}
+
+.card-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    background: #060606;
+    border-radius: 10px;
+    transform-origin: left top;
+}
+
+.card-bg p {
+    color: #F9F9F9;
+    opacity: 0.25;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-cta {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 75%;
+    background: #060606;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.card-cta p {
+    position: absolute;
+    top: 30%;
+    right: -10%;
+    transform: rotate(90deg);
+    color: #F9F9F9;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-fg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    background: #060606;
+    backdrop-filter: blur(25px);
+    border-radius: 10px;
+    color: #F9F9F9;
+    transform-style: preserve-3d;
+    transform-origin: left top;
+    transition: 0.5s;
+}
+
+.card-fg p.case-study {
+    margin-bottom: 2em;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+.card:hover .card-cta {
+    transform: translateX(40px) rotateZ(7deg);
+}
+
+.card:hover .card-fg {
+    transform: rotateY(-40deg);
+}
+
+
 /* Partie de la team section */
 
 .cursor {
@@ -148,7 +272,7 @@
 }
 
 .cursor-blanc i {
-    color: #fff;
+    color: #F9F9F9;
 }
 
 .modal-images img {
@@ -164,11 +288,11 @@
     position: absolute;
 }
 
-/*.title-team-section {
+.title-team-section {
     position: relative;
-    top: 10%;
-    z-index: 999999;
-}*/
+    left: 5%;
+
+}
 
 .overlay {
     position: absolute;
@@ -185,7 +309,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #F9F9F9;
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
@@ -262,7 +386,7 @@
 }
 
 .bg-1 {
-    background: #fff;
+    background: #F9F9F9;
 }
 
 .bg-2 {
@@ -293,3 +417,4 @@
         height: 500px;
     }
 }
+

@@ -1,4 +1,4 @@
-window.onload = function () {
+window.addEventListener('load', function() {
 
     // objet contenant les infos des membres de l'équipe
     const team = [
@@ -98,5 +98,4 @@ window.onload = function () {
             handleLeftClick();
         }
     })
-
-}
+});
