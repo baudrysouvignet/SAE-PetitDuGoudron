@@ -41,7 +41,7 @@ $calendar = recoverAllEvents(
     </div>
 </div>
 <div class="spline">
-    <iframe src="https://my.spline.design/snowman-1dc179c3becd50305885dabd8e7a5e90/"
+    <iframe src="https://my.spline.design/snowman-1dc179c3becd50305885dabd8e7a5e90/" frameborder="0"
             width="100%" height="100%"></iframe>
 </div>
 
