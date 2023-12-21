@@ -57,19 +57,24 @@ $btnName = "S'inscrire";
     <title>Document</title>
     <link rel="stylesheet" href="../../styles/partials/participationForm.css"">
     <link rel="stylesheet" href="../../styles/pages/participer.css"">
+    <script src="../../scripts/pages/participer.js" defer></script>
 </head>
 <body>
 <?php include '../partials/nav.php'?>
 
 <main>
-    <h1>Formulaire d'inscription</h1>
+    <h1>Inscrivez votre enfant !</h1>
+
+    <p id="MSGinsc">Vérifiez les informations puis procédez à l'inscription !</p>
 
     <div class="contentForm">
         <?php
         include "../../../partials/participationForm.php";
         ?>
     </div>
+    <button class="button" id="next">suivant</button>
 </main>
+
 
 <?php include '../partials/footer.php'?>
 

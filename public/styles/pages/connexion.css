@@ -32,6 +32,12 @@ main form label {
     display: none;
 }
 
+form input:not([type="submit"]), main form textarea,.sexe {
+    padding: 5px 10px;
+    border: 2px solid #EAEAEA !important;
+    border-radius: 5px !important;
+}
+
 main form input:not([type="submit"]) {
     padding: 8px 20px;
     border-radius: 50px;

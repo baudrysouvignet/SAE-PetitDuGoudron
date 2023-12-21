@@ -27,6 +27,7 @@ $isValue = isset($infoForm);
             </div>
         </div>
     </div>
+
     <div>
         <label for="adress">Adresse :</label>
         <input type="text" id="adress" name="adresse" <?= $isValue ? 'value ='. $infoForm['adress'] : ""?> required>
@@ -76,5 +77,6 @@ $isValue = isset($infoForm);
             <option value="0">Non</option>
         </select>
     </div>
+    <input type="hidden" id="startIndex" value="6"> <!-- Index de départ pour afficher les éléments suivants -->
     <input class="button" type="submit" name="participer" value="<?= $btnName ?>">
 </form>

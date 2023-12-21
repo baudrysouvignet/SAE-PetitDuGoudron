@@ -1,22 +1,49 @@
 body {
     background-color: rgba(128, 121, 212, 0.2);
+    transition: 0.5s;
 }
 
 main {
-    min-height: calc(100vh - 160px);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: calc(100% - 40px);
     max-width: 500px;
-    margin: 160px auto;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 100px 0;
+}
+
+#MSGinsc {
+    display: none;
+    text-align: center;
+}
+
+main form input:not([type="submit"]), main form textarea,.sexe {
+    padding: 5px 10px;
+    border: 2px solid #EAEAEA !important;
+    border-radius: 5px !important;
+}
+
+main form {
+    flex-direction: column;
+}
+
+main form > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .contentForm {
     padding: 30px 20px;
     border-radius: 10px;
-    background-color: #F9F9F9;
+    width: 100%;
+}
+
+.contentsexe, .sexe {
+    width: 100% !important;
+    justify-content: space-around !important
 }
 
 .contentForm input:not([type="submit"]), .sexe, textarea, #autorisation_parentale {
@@ -29,6 +56,14 @@ h1 {
     width: calc(100% - 40px) ;
     text-align: center;
     margin: 50px 0;
+}
+
+.formPart div {
+    display: none;
+}
+
+.formPart div:nth-of-type(-n+3) {
+    display: flex;
 }
 
 @media screen and (max-width: 480px) {

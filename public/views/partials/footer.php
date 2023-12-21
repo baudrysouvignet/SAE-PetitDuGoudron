@@ -17,8 +17,6 @@
             </nav>
         </div>
     </div>
-    <div class="footer-bottom-right">
-        <p>© 2023 Régie de Quartier du Puy-en-Velay. <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
-    </div>
+
 </footer>
 

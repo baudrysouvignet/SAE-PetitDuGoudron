@@ -33,7 +33,7 @@ if ($current_page === 'index.php') {
                         <div class="nav-item-wrapper"></div>
                     </div>
                     <div class="nav-link">
-                        <a href="<?= $beforLinkNav.'participer.php'?>"><img src="<?= $beforLink.'img/nav/account.svg'?>" alt="Perticiper">Participer</a>
+                        <a href="<?= $beforLinkNav.'participer.php'?>"><img src="<?= $beforLink.'img/nav/add_notes.svg'?>" alt="Perticiper">Participer</a>
                         <div class="nav-item-wrapper"></div>
                     </div>
                 </div>

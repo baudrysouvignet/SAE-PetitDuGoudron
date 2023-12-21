@@ -36,6 +36,8 @@ box-sizing: border-box;
     font-size: 1em;
     line-height: 1.6; /* Espacement des lignes */
     margin: 5px 0;
+    font-weight: 300;
+    font-family: Arial;
 }
 
 .footer-section nav a {
@@ -67,6 +69,10 @@ box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
+    footer {
+        height: fit-content;
+        padding:50px 0;
+    }
     .footer-content {
         flex-direction: column;
         align-items: center;

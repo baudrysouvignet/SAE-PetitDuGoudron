@@ -5,6 +5,12 @@ main {
     min-height: calc(100vh - 140px);
 }
 
+form input:not([type="submit"]), main form textarea,.sexe {
+    padding: 5px 10px;
+    border: 2px solid #EAEAEA !important;
+    border-radius: 5px !important;
+}
+
 main h1 {
     margin-bottom: 80px;
     line-height: 120%;
