@@ -15,13 +15,17 @@ if ($current_page === 'index.php') {
 <link rel="stylesheet" href="<?= $beforLink.'styles/partials/styles_preloader.css'?>">
 <link rel="stylesheet" href="<?= $beforLink.'styles/partials/styles_nav.css'?>">
 <link rel="stylesheet" href="<?= $beforLink.'styles/partials/styles_footer.css'?>">
+<link rel="stylesheet" href="<?= $beforLink.'styles/pages/styles_index.css'?>">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/TextPlugin.min.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<script src="<?= $beforLink.'scripts/partials/nav.js'?>"></script>
 <script src="<?= $beforLink.'scripts/partials/preloader.js'?>"></script>
+<script src="<?= $beforLink.'scripts/partials/nav.js'?>"></script>
+<script src="<?= $beforLink.'scripts/pages/index.js'?>"></script>
+
 
 
 

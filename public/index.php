@@ -15,7 +15,7 @@ $calendar = recoverAllEvents(
 ?>
 
 <?php include ('views/partials/head.php') ?>
-
+<?php //include ('views/partials/preloader.php') ?>
 <body>
 <?php include ('views/partials/nav.php') ?>
 
@@ -27,7 +27,7 @@ $calendar = recoverAllEvents(
             </div>
             <div class="row row-2">
                 <div></div>
-                <div class="h1">P'tits du goudron</div>
+                <div class="h1">les petits du goudron</div>
                 <div></div>
             </div>
             <div class="row row-3">
@@ -45,7 +45,52 @@ $calendar = recoverAllEvents(
             width="100%" height="100%"></iframe>
 </div>
 
+<div class="container-team-section">
 
+    <div class="overlay">
+        <div class="bg-1 nom-wrapper">
+            <h1 class="h1-team-section">Gaspard Michel Gaspard Michel Gaspard Michel</h1>
+        </div>
+        <div class="bg-2 nom-wrapper">
+            <h1 class="h1-team-section">Baudry Souvignet Baudry Souvignet Baudry Souvignet</h1>
+        </div>
+        <div class="bg-3 nom-wrapper">
+            <h1 class="h1-team-section">Pierrick Boutte Pierrick Boutte Pierrick Boutte</h1>
+        </div>
+        <div class="bg-4 nom-wrapper">
+            <h1 class="h1-team-section">Mathis Oudin Mathis Oudin Mathis Oudin</h1>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-images">
+            <div class="img" id="bg-1">
+                <img src="views/img/index/team-1.jpg" alt="Gaspard Michel le bg" />
+            </div>
+
+            <div class="img" id="bg-2">
+                <img src="views/img/index/team-2.jpg" alt="Baudry Souvignet le magnifique" />
+            </div>
+
+            <div class="img" id="bg-3">
+                <img src="views/img/index/team-3.jpg" alt="Pierrick Boutte le splendide" />
+            </div>
+
+            <div class="img" id="bg-4">
+                <img src="views/img/index/team-4.jpg" alt="Mathis Oudin le jolie" />
+            </div>
+
+        </div>
+
+        <div class="info">
+            <p class="name">Gaspard Michel</p>
+            <p class="role">aka Atlassian god</p>
+        </div>
+    </div>
+</div>
+
+<div class="cursor">
+    <i class="ph-light ph-arrow-left"></i>
+</div>
 
 <h1>Calendar</h1>
 <?php
@@ -60,3 +105,11 @@ HTML;
 }
 ?>
 </body>
+
+<style> span{
+        background: #ffffff;
+    }
+       span::before {
+           background: white;
+       }
+</style>
