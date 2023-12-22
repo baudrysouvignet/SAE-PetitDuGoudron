@@ -15,7 +15,7 @@ $calendar = recoverAllEvents(
 ?>
 
 <?php include ('views/partials/head.php') ?>
-<?php //include ('views/partials/preloader.php') ?>
+<?php include ('views/partials/preloader.php') ?>
 <body>
 <?php include ('views/partials/nav.php') ?>
 
