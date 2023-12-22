@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
 
 const tl = gsap.timeline({ paused: true });
 
+// fonction pour ouvrir le menu
 function openNav() {
     animateOpenNav();
     const navBtn = document.getElementById("menu-toggle-btn");
@@ -13,6 +14,7 @@ function openNav() {
 
 openNav();
 
+// fonction pour animer le menu avec GSAP
 function animateOpenNav() {
     tl.to("#nav-container", 0.2, {
         autoAlpha: 1,

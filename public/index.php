@@ -25,11 +25,10 @@ $calendar = recoverAllEvents(
 </html>
 
 
-
-
 <body>
 <?php include ('views/partials/nav.php') ?>
 
+<?php include ('views/partials/preloader.php') ?>
 <div class="container-hero-section">
     <div class="hero-section">
         <div class="copy">
