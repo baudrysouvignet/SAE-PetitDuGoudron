@@ -107,8 +107,6 @@ if (isset($_POST['participer'])) {
     <title>Réglages</title>
     <link rel="stylesheet" href='../../styles/pages/reglage.css'>
     <link rel="stylesheet" href='../../styles/partials/participationForm.css'>
-
-    <script src="../../scripts/pages/reglage.js" defer></script>
 </head>
 <body>
 <?php include '../partials/nav.php'?>
@@ -203,5 +201,8 @@ HTML;
     ?>
 </main>
 <?php include '../partials/footer.php'?>
+
+
+<script src="../../scripts/pages/reglage.js" defer></script>
 </body>
 

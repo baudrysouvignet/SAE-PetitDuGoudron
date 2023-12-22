@@ -73,8 +73,8 @@ $isValue = isset($infoForm);
     <div>
         <label for="autorisation_parentale">Autorisation Parentale :</label>
         <select id="autorisation_parentale" name="autorisation_parentale" required>
-            <option <?= $isValue ? 'selected' : ""?> value="1" >Oui</option>
-            <option value="0">Non</option>
+            <option <?= $isValue && $infoForm['autorisation_parentale'] == 1 ?  'selected' : ""?> value="1" >Oui</option>
+            <option <?= $isValue && $infoForm['autorisation_parentale'] == 0 ?  'selected' : ""?> value="0">Non</option>
         </select>
     </div>
     <input type="hidden" id="startIndex" value="6"> <!-- Index de départ pour afficher les éléments suivants -->

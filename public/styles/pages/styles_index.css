@@ -444,3 +444,99 @@
         font-size: 90px;
     }
 }
+
+.title-team-section {
+    margin-top: 150px;
+    font-size: 48px;
+}
+
+.container-calendar .color {
+    color: #ff5340;
+}
+
+.container-cal {
+    margin-top: calc(100vh + 100px)!important;
+    margin-bottom: 250px;
+}
+
+.container-cal h2 {
+    margin-bottom: 60px;
+}
+
+.container-cal {
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 1300px;
+}
+
+.container-calendar {
+
+    max-width: 1300px;
+
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.container-calendar .cal {
+    flex: 1 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    min-width: 500px;
+}
+
+.container-calendar .cal:before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 3px;
+    top: 0;
+    left: 0;
+    background-color: #ff5340;
+}
+
+.container-calendar .date {
+    height: fit-content;
+    width: fit-content;
+    transform: rotate(90deg);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.container-calendar h4 {
+    font-size: 30px;
+}
+
+.container-calendar .cal div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-calendar .cal .content {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 700px) {
+    .container-calendar .cal {
+        flex: 1 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 120px;
+        min-width: 330px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container-cal h2 {
+        font-size: 30px;
+    }
+
+    .container-calendar h4 {
+        font-size: 20px;
+    }
+}

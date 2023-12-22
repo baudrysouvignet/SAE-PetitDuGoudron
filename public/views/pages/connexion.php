@@ -94,12 +94,15 @@ if (isset($_SESSION['user_info'])) {
 
 <main>
     <h1 class="title">Bienvenue !</h1>
+    <p style="font-size: 12px; text-align: center; margin-bottom: 40px">
+        Pour accéder à l'espace administrateur, veuillez consulter le dossier admin_mdp.pdf dans le rendu.
+    </p>
     <form action="connexion.php" method="post">
         <label for="mail">Mail</label>
-        <input type="text" name="mail" id="mail" placeholder="mail">
+        <input type="text" name="mail" id="mail" placeholder="mail" required>
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Mot de passe">
+        <input type="password" name="password" id="password" placeholder="Mot de passe" required>
 
         <input class="button" type="submit" name="login" value="Se connecter">
         <input class="button" type="submit" name="register" value="S'inscire">

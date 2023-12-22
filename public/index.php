@@ -14,11 +14,21 @@ $calendar = recoverAllEvents(
 
 ?>
 
-<?php include ('views/partials/head.php') ?>
-<?php include ('views/partials/preloader.php') ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="scripts/partials/preloader.js"></script>
+    <script src="scripts/pages/index.js"></script>
+    <?php include ('views/partials/head.php') ?>
+    <title>Petit du goudron</title>
+</head>
+</html>
+
+
 <body>
 <?php include ('views/partials/nav.php') ?>
 
+<?php include ('views/partials/preloader.php') ?>
 <div class="container-hero-section">
     <div class="hero-section">
         <div class="copy">
@@ -35,6 +45,8 @@ $calendar = recoverAllEvents(
                 <div class="span">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSCRIVEZ VOTRE ENFANT EN LIGNE EN CRÉANT UN COMPTE ET EN COMPLÉTANT LES
                     DOCUMENTS NÉCESSAIRES.
+                    <br><br>
+                    <a class="button" href="views/pages/participer.php" style="background-color: white; color: #8079D4; margin-top: 20px">S"inscrire</a>
                 </div>
             </div>
         </div>
@@ -45,7 +57,7 @@ $calendar = recoverAllEvents(
             width="100%" height="100%"></iframe>
 </div>
 
-<div class="container-advantages-section">
+<div class="container-advantages-section" style="margin-top: 150px">
     <div class="header-advantages-section">
         <h1>Les petits du goudron <br />c'est quoi ? </h1>
     </div>
@@ -88,7 +100,7 @@ $calendar = recoverAllEvents(
     </div>
 </div>
 
-<h1 class="title-team-section">Notre équipe.</h1>
+<h1 class="title-team-section">Notre équipe</h1>
 
 <div class="container-team-section">
 
@@ -141,16 +153,43 @@ $calendar = recoverAllEvents(
 
 
 
-<h1>Calendar</h1>
-<?php
-foreach ($calendar as $event) {
-    echo <<<HTML
-    <div>
-        <p>{$event['Title']}</p>
-        <p>{$event['Time']}</p>
-        <p>{$event['Description']}</p>
-    </div>
+
+<div class="container-cal">
+    <h2>Les événements</h2>
+
+
+    <div class="container-calendar">
+
+        <?php
+        foreach ($calendar as $event) {
+            $date = $event['Time'];
+
+            $dateParts = explode('-', $date);
+            $mois = $dateParts[1];
+            $jour = $dateParts[2];
+            $annee = $dateParts[0];
+
+            $dateReformatee = $jour . '/' . $mois;
+
+            echo <<<HTML
+<div class="cal">
+            <p class="date color">{$dateReformatee}</p>
+            <div>
+                <h4 class="color">{$event['Title']}</h4>
+                <p class="content">{$event['Description']}</p>
+            </div>
+        </div>
 HTML;
-}
-?>
+        }
+        ?>
+    </div>
+</div>
+<?php include 'views/partials/footer.php'?>
+
+<style>
+    footer {
+        margin-top: 300px;
+    }
+</style>
+
 </body>

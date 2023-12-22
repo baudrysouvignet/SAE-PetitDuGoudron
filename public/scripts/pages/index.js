@@ -2,10 +2,10 @@ window.addEventListener('load', function() {
 
     // objet contenant les infos des membres de l'équipe
     const team = [
-        { name: "Gaspard Michel", role: "aka Atlassian god" },
-        { name: "Baudry Souviget", role: "aka PHP alien" },
-        { name: "Pierrick Boutte", role: "aka designer drip" },
-        { name: "Mathis Oudin", role: "aka JS cook" },
+        { name: "Gaspard Michel", role: "Chef des activité" },
+        { name: "Baudry Souviget", role: "Chef de la cuisine" },
+        { name: "Pierrick Boutte", role: "Chef des soirés" },
+        { name: "Mathis Oudin", role: "Chef des Chefs" },
     ];
 
     const cursor = document.querySelector('.cursor');

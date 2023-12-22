@@ -1,7 +1,7 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
 $beforLink = '../../';
-if ($current_page === 'index.php') {
+if ($current_page === 'index.php' || $current_page === 'test.php') {
     $beforLink = '';
 }
 ?>
@@ -22,9 +22,9 @@ if ($current_page === 'index.php') {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/TextPlugin.min.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<script src="<?= $beforLink.'scripts/partials/preloader.js'?>"></script>
+<link rel="icon" type="image/png" href="<?= $beforLink.'views/img/nav/logo.svg'?>">
+
 <script src="<?= $beforLink.'scripts/partials/nav.js'?>"></script>
-<script src="<?= $beforLink.'scripts/pages/index.js'?>"></script>
 
 
 
