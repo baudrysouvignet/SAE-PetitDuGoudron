@@ -15,7 +15,7 @@ $user = new userEntity(
 );
 
 if (!isset($_SESSION['user_info'])) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -155,7 +155,6 @@ if (isset($_POST['eventDelete'])) {
 <head>
     <?php include '../partials/head.php'?>
     <link rel="stylesheet" href="../../styles/pages/admin.css">
-    <script src="../../scripts/pages/admin.js" defer></script>
     <title>PDG - Admin</title>
 </head>
 <body>
@@ -218,5 +217,6 @@ if (isset($_POST['eventDelete'])) {
 
     </main>
     <?php include '../partials/footer.php'?>
+    <script src="../../scripts/pages/admin.js" defer></script>
 </body>
 </html>

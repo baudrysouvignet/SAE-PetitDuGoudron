@@ -57,7 +57,7 @@ $btnName = "S'inscrire";
     <title>Document</title>
     <link rel="stylesheet" href="../../styles/partials/participationForm.css"">
     <link rel="stylesheet" href="../../styles/pages/participer.css"">
-    <script src="../../scripts/pages/participer.js" defer></script>
+    <script src="../../scripts/pages/participer.js" defer ></script>
 </head>
 <body>
 <?php include '../partials/nav.php'?>

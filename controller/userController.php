@@ -17,7 +17,7 @@ function connection(
 ): void
 {
     $isConnect = $user->connect(
-        mail: $mail,
+        mail: strtolower($mail),
         password: $password
     );
 
@@ -45,13 +45,13 @@ function inscription(
     $isMailUsed = $database->select(
         request: "SELECT ID_Utilisateur FROM User WHERE mail = :mail",
         param: [
-            "mail" => $mail,
+            "mail" => strtolower($mail),
         ]
     );
 
     if (empty($isMailUsed)){
         $user->register (
-            mail: $mail,
+            mail: strtolower($mail),
             password: $password
         );
         return true;

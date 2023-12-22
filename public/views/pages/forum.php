@@ -117,14 +117,18 @@ if (isset($_POST['banMan'])) {
     <p>Rencontrez la communauté des Petits du Goudron et partagez vos expériences</p>
     <form action="forum.php" method="post">
         <label for="title">Question</label>
-        <input type="text" name="title" id="title" placeholder="Titre" maxlength="250">
+        <input type="text" name="title" id="title" placeholder="Titre" maxlength="250" required>
 
         <label for="description">Description</label>
-        <input type="text" name="description" id="description" placeholder="Description">
+        <input type="text" name="description" id="description" placeholder="Description" required>
 
-        <input class="button" type="submit" name="addSpace" value="Ajouter un espace">
-
-        <script src="../../scripts/pages/forum.js" defer></script>
+        <?php
+        if (isset($_SESSION['user_info'])){
+            echo '<input class="button" type="submit" name="addSpace" value="Ajouter un espace">';
+        } else {
+            echo '<a class="button" style="text-decoration: underline" href="connexion.php">Se connecter</a>';
+        }
+        ?>
     </form>
 </div>
 
@@ -152,7 +156,7 @@ foreach ($spaceList as $space) {
         <div class="post">
             <div class="info">
                 <div class="nameInfo">
-                    <img src="https://images.unsplash.com/photo-1695653422853-3d8f373fb434?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="" srcset="">
+                    <img src="../img/icon_forum.png" alt="" srcset="">
                     <p>@{$nameAccount}</p>
                 </div>
                 <div class="contentInfo">
@@ -163,7 +167,7 @@ foreach ($spaceList as $space) {
             <form class="formAnswer" action="forum.php" method="post">
                 <input type="hidden" name="spaceID" value="{$space->getData()['id']}">
                 <label for="comment" style="display: none">Commentaire</label>
-                <input type="text" name="comment" id="comment" placeholder="Votre commentaire">
+                <input type="text" name="comment" id="comment" placeholder="Votre commentaire" required>
                 <input class="button" type="submit" name="{$name}" value="{$field}">
             </form>
             <div class="management">
@@ -220,7 +224,7 @@ HTML;
             <div class="post">
                 <div class="info">
                     <div class="nameInfo">
-                        <img src="https://images.unsplash.com/photo-1695653422853-3d8f373fb434?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="" srcset="">
+                        <img src="../img/icon_forum.png" alt="" srcset="">
                         <p>@{$nameAccount} - {$post->getData()['createdAt']}</p>
                     </div>
                     <div class="contentInfo">
@@ -254,6 +258,7 @@ HTML;
 
 <?php include ('../partials/footer.php'); ?>
 
+<script src="../../scripts/pages/forum.js" defer></script>
 </body>
 </html>
 

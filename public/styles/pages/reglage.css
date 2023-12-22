@@ -11,6 +11,10 @@ form input:not([type="submit"]), main form textarea,.sexe {
     border-radius: 5px !important;
 }
 
+.button {
+    height: 36px;
+}
+
 main h1 {
     margin-bottom: 80px;
     line-height: 120%;
